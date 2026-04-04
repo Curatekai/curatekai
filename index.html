@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="description" content="Curatek AI provides a complete AI Front Desk for local service businesses — AI voice receptionist, chat widget, and SMS reminders. Stop losing customers to missed calls.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Curatek AI provides a complete AI Front Desk for local service businesses and healthcare practices — AI voice receptionist, chat widget, and SMS reminders. Stop losing customers to missed calls.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Curatek AI — AI Front Desk for Local Service Businesses</title>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -28,7 +28,6 @@
   /* HEADER */
   header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(21,77,68,0.1); padding: 0 2rem; }
   .header-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 72px; }
-  .logo-img { height: 48px; width: auto; }
   nav { display: flex; gap: 1.75rem; align-items: center; }
   nav a { font-size: 0.875rem; font-weight: 500; color: var(--slate); text-decoration: none; transition: color 0.2s; }
   nav a:hover { color: var(--teal); }
@@ -77,16 +76,7 @@
   .problem-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.5rem; }
   .problem-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
 
-  /* OUTCOMES */
-  .outcomes { background: var(--white); }
-  .outcomes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
-  .outcome-card { background: var(--bg-light); border-radius: var(--radius); padding: 2rem; box-shadow: 0 2px 16px rgba(0,0,0,0.06); border-top: 3px solid var(--teal); transition: transform 0.2s, box-shadow 0.2s; }
-  .outcome-card:hover { transform: translateY(-4px); box-shadow: 0 10px 36px rgba(0,0,0,0.1); }
-  .outcome-icon { width: 44px; height: 44px; background: rgba(21,77,68,0.08); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 1rem; }
-  .outcome-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--teal); margin-bottom: 0.5rem; }
-  .outcome-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
-
-  /* HOW IT WORKS */
+  /* SOLUTION */
   .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem; }
   .step { padding: 2rem; border-radius: var(--radius); background: linear-gradient(135deg, rgba(21,77,68,0.04), rgba(21,77,68,0.01)); border: 1px solid rgba(21,77,68,0.1); }
   .step-number { width: 36px; height: 36px; background: var(--teal); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.875rem; font-weight: 700; margin-bottom: 1.25rem; }
@@ -105,22 +95,13 @@
   .automate-item h4 { font-size: 0.9rem; font-weight: 600; color: var(--white); margin-bottom: 0.2rem; }
   .automate-item p { font-size: 0.8rem; color: rgba(255,255,255,0.45); }
 
-  /* HIPAA */
-  .hipaa { background: var(--bg-light); }
-  .hipaa-box { background: var(--white); border-radius: var(--radius); padding: 2.5rem; border-left: 4px solid var(--teal); margin-top: 2rem; box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
-  .hipaa-box h3 { font-size: 1.2rem; font-weight: 700; color: var(--teal); margin-bottom: 1rem; }
-  .hipaa-box p { font-size: 0.925rem; color: var(--slate); line-height: 1.72; margin-bottom: 1rem; }
-  .hipaa-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
-  .hipaa-list li { background: rgba(21,77,68,0.07); color: var(--teal); padding: 0.35rem 1rem; border-radius: 100px; font-size: 0.82rem; font-weight: 600; }
-  .hipaa-list li::before { content: "✓ "; }
-
   /* PRICING */
   .pricing { background: var(--bg-light); }
-  .pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3rem; max-width: 800px; }
-  @media (max-width: 700px) { .pricing-grid { grid-template-columns: 1fr; } }
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  @media (max-width: 900px) { .pricing-grid { grid-template-columns: 1fr; max-width: 480px; } }
   .pricing-card { background: var(--white); border-radius: var(--radius); padding: 2.25rem; box-shadow: 0 2px 16px rgba(0,0,0,0.06); border: 2px solid transparent; position: relative; transition: all 0.2s; display: flex; flex-direction: column; }
   .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
-  .pricing-card.featured { border-color: var(--teal); box-shadow: 0 8px 40px rgba(21,77,68,0.15); }
+  .pricing-card.featured { border-color: var(--teal); box-shadow: 0 8px 40px rgba(21,77,68,0.15); transform: translateY(-6px); }
   .pricing-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--orange); color: var(--white); font-size: 0.68rem; font-weight: 700; padding: 0.22rem 1rem; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; }
   .tier-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--orange); margin-bottom: 0.4rem; }
   .pricing-card h3 { font-size: 1.5rem; font-weight: 700; color: var(--teal); margin-bottom: 0.2rem; }
@@ -128,6 +109,7 @@
   .pricing-price-box { background: rgba(21,77,68,0.05); border-radius: var(--radius-sm); padding: 1rem 1.25rem; margin-bottom: 1.5rem; }
   .pricing-monthly { font-size: 1.6rem; font-weight: 700; color: var(--teal); line-height: 1; }
   .pricing-monthly span { font-size: 0.85rem; font-weight: 500; color: var(--text-muted); }
+  .pricing-setup { font-size: 0.78rem; color: var(--orange); margin-top: 0.4rem; font-weight: 600; }
   .pricing-features { list-style: none; margin-bottom: 2rem; flex: 1; }
   .pricing-features li { font-size: 0.865rem; color: var(--slate); padding: 0.45rem 0; display: flex; align-items: flex-start; gap: 0.6rem; border-bottom: 1px solid rgba(0,0,0,0.04); line-height: 1.4; }
   .pricing-features li:last-child { border-bottom: none; }
@@ -161,7 +143,6 @@
   .final-cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
 
   footer { background: var(--bg-dark); border-top: 1px solid rgba(255,255,255,0.05); padding: 2rem; text-align: center; }
-  footer p { font-size: 0.8rem; color: rgba(255,255,255,0.3); }
   footer a { color: rgba(255,255,255,0.45); text-decoration: none; }
 
   @media (max-width: 768px) { .nav-links { display: none; } .flow-visual { flex-direction: column; } .flow-arrow { transform: rotate(90deg); } }
@@ -180,7 +161,7 @@
 <!-- HEADER -->
 <header>
   <div class="header-inner">
-   <a href="#"><img src="curatek-logo.png" alt="Curatek AI" style="height: 48px; width: auto;"></a>
+    <a href="#"><img src="curatek-logo.png" alt="Curatek AI" style="height: 48px; width: auto;"></a>
     <nav class="nav-links">
       <a href="#problem">The Problem</a>
       <a href="#solution">Solution</a>
@@ -196,14 +177,14 @@
   <div class="hero-inner">
     <div class="hero-badge">🏥 Built for Local Service Businesses & Healthcare Practices</div>
     <h1>Your Business Is Losing Customers <em>Every Day.</em><br>Curatek AI Fixes That — Automatically.</h1>
-   <p>AI-powered front desk automation for local service businesses. Capture missed calls, book appointments, and reduce no-shows — without replacing your staff or disrupting your existing systems.</p>
+    <p>AI-powered front desk automation for local service businesses. Capture missed calls, book appointments, and reduce no-shows — without replacing your staff or disrupting your existing systems.</p>
     <div class="hero-ctas">
       <a href="https://app.curatekai.com/demo" class="btn btn-primary btn-lg">See Your Free Demo</a>
       <a href="no_show_playbook.pdf" class="btn btn-ghost btn-lg">Download No-Show Playbook</a>
     </div>
     <div class="trust-line">
-      <span>HIPAA-conscious design</span>
-      <span>Works with your existing EMR</span>
+      <span>No disruption to existing systems</span>
+      <span>Works for any service business</span>
       <span>Setup in under 48 hours</span>
     </div>
     <div class="flow-visual">
@@ -235,7 +216,7 @@
       <div class="problem-card">
         <div class="problem-icon">🌙</div>
         <h3>After-Hours Inquiries</h3>
-        <p>Customers call after 5pm when you're closed. Without an AI answering system those leads disappear overnight — no voicemail follow-up, no booking.</p>
+        <p>Customers call after 5pm when you're closed. Without an AI answering system those leads disappear overnight — no callback, no booking, no revenue.</p>
       </div>
       <div class="problem-card">
         <div class="problem-icon">⏰</div>
@@ -267,7 +248,7 @@
       </div>
       <div class="step">
         <div class="step-number">3</div>
-        <h3>📱 SMS Appointment Reminders</h3>
+        <h3>📱 SMS Reminders</h3>
         <p>Automatically sends reminders to confirmed customers. Reduces no-shows without your staff lifting a finger. Fully compliant and carrier-approved.</p>
         <span class="step-tag">SMS Reminders · Confirmation · No-Show Reduction</span>
       </div>
@@ -286,32 +267,10 @@
       <div class="automate-item"><div class="automate-check">✓</div><div><h4>Website Chat Widget</h4><p>Captures appointment requests and customer inquiries from your business website</p></div></div>
       <div class="automate-item"><div class="automate-check">✓</div><div><h4>Missed Call SMS Recovery</h4><p>Automatically texts every missed caller within seconds so no customer is lost</p></div></div>
       <div class="automate-item"><div class="automate-check">✓</div><div><h4>Appointment Request Capture</h4><p>Collects customer name, phone, email, and preferred appointment time</p></div></div>
-      <div class="automate-item"><div class="automate-check">✓</div><div><h4>SMS Appointment Reminders</h4><p>72-hour and 24-hour reminders sent automatically to reduce no-shows</p></div></div>
+      <div class="automate-item"><div class="automate-check">✓</div><div><h4>SMS Appointment Reminders</h4><p>Automatic reminders sent to reduce no-shows without staff involvement</p></div></div>
       <div class="automate-item"><div class="automate-check">✓</div><div><h4>Staff Notifications</h4><p>Your team gets instant alerts for new leads and appointment requests</p></div></div>
       <div class="automate-item"><div class="automate-check">✓</div><div><h4>CRM Pipeline Tracking</h4><p>Every lead tracked from first contact to confirmed appointment</p></div></div>
-      <div class="automate-item"><div class="automate-check">✓</div><div><h4>Zero System Disruption</h4><p>Works alongside your existing scheduling or management software — no disruption to your current workflow</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- HIPAA SECTION -->
-<section class="hipaa" id="hipaa">
-  <div class="section-inner">
-    <div class="section-label">Compliance</div>
-    <h2 class="section-title">Built for Healthcare. Designed to Stay Compliant.</h2>
-    <p class="section-sub">Curatek AI operates before your existing systems — not inside them. We only collect the information needed to connect a customer with your team.</p>
-    <div class="hipaa-box">
-      <h3>What We Collect vs. What We Never Touch</h3>
-      <p>Our system captures only what's needed to connect a customer with your business. Everything else stays inside your existing systems where it belongs.</p>
-      <p><strong style="color:var(--teal);">We only collect:</strong></p>
-      <ul class="hipaa-list">
-        <li>First and Last Name</li>
-        <li>Phone Number</li>
-        <li>Email Address</li>
-        <li>Preferred Appointment Time</li>
-      </ul>
-      <p style="margin-top:1.5rem;"><strong style="color:var(--orange);">We never collect:</strong> Medical history · Diagnosis · Insurance details · Treatment records · Clinical notes</p>
-      <p style="margin-top:1rem; font-size:0.875rem; color:var(--text-muted);">This design keeps Curatek AI outside PHI handling requirements, making it easy to deploy without complex compliance overhead. We recommend consulting your compliance officer for your specific obligations.</p>
+      <div class="automate-item"><div class="automate-check">✓</div><div><h4>Zero System Disruption</h4><p>Works alongside your existing scheduling or management software seamlessly</p></div></div>
     </div>
   </div>
 </section>
@@ -321,28 +280,27 @@
   <div class="section-inner">
     <div class="section-label">Pricing</div>
     <h2 class="section-title">Simple, Transparent Pricing</h2>
-    <p class="section-sub">Two plans. No long-term contracts. Setup completed within 48 hours.</p>
-
+    <p class="section-sub">Three plans. No long-term contracts. Setup completed within 48 hours.</p>
     <div class="pricing-grid">
 
-      <!-- ESSENTIAL -->
+      <!-- STARTER -->
       <div class="pricing-card">
-        <div class="tier-label">Essential</div>
-        <h3>Essential</h3>
-       <p class="pricing-for">For service businesses ready to stop losing customers to missed calls and slow response times</p>
+        <div class="tier-label">Starter</div>
+        <h3>Starter</h3>
+        <p class="pricing-for">Stop losing calls to voicemail — ever again</p>
         <div class="pricing-price-box">
-          <div class="pricing-monthly">$349<span>/month</span></div>
-          <div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.4rem;">Setup included · No contract</div>
+          <div class="pricing-monthly">$197<span>/month</span></div>
+          <div class="pricing-setup">+ $97 one-time setup</div>
         </div>
         <ul class="pricing-features">
-          <li>AI Chat Widget on your website</li>
-          <li>Missed Call SMS Recovery</li>
-          <li>Appointment Request Capture</li>
+          <li>AI answers every missed call 24/7</li>
+          <li>Instant SMS sent to every missed caller</li>
+          <li>Caller details sent to you immediately</li>
           <li>CRM Pipeline Tracking</li>
-          <li>Staff Email Notifications</li>
-          <li>Onboarding &amp; Setup Included</li>
+          <li>Email Notifications</li>
+          <li>Setup Included</li>
         </ul>
-        <a href="https://app.curatekai.com/demo" class="btn btn-outline pricing-cta">Book a Demo</a>
+        <a href="https://api.curatekai.com/widget/booking/EvrEIsnE6i1bLxEAAGJU" class="btn btn-outline pricing-cta">Get Started</a>
       </div>
 
       <!-- PROFESSIONAL -->
@@ -350,25 +308,46 @@
         <div class="pricing-badge">Most Popular</div>
         <div class="tier-label">Professional</div>
         <h3>Professional</h3>
-        <p class="pricing-for">For clinics that want the complete AI front desk — voice, chat, and SMS working together</p>
+        <p class="pricing-for">Your complete AI front desk — 24/7</p>
         <div class="pricing-price-box">
-          <div class="pricing-monthly">$599<span>/month</span></div>
-          <div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.4rem;">Setup included · No contract</div>
+          <div class="pricing-monthly">$397<span>/month</span></div>
+          <div class="pricing-setup">+ $197 one-time setup</div>
         </div>
         <ul class="pricing-features">
-          <li>Everything in Essential</li>
-          <li>AI Voice Receptionist (24/7)</li>
-          <li>SMS Appointment Reminders</li>
-          <li>72-hour &amp; 24-hour reminder sequences</li>
-          <li>Multi-workflow automation</li>
+          <li>Everything in Starter</li>
+          <li>AI Voice Receptionist 24/7</li>
+          <li>After-hours calls captured automatically</li>
+          <li>AI Chat Widget on your website</li>
+          <li>Website visitors captured 24/7</li>
           <li>Priority support</li>
         </ul>
-        <a href="https://app.curatekai.com/demo" class="btn btn-primary pricing-cta">Book a Demo</a>
+        <a href="https://api.curatekai.com/widget/booking/EvrEIsnE6i1bLxEAAGJU" class="btn btn-primary pricing-cta">Choose Professional</a>
+      </div>
+
+      <!-- ENTERPRISE -->
+      <div class="pricing-card">
+        <div class="tier-label">Enterprise</div>
+        <h3>Enterprise</h3>
+        <p class="pricing-for">Built for businesses with multiple locations</p>
+        <div class="pricing-price-box">
+          <div class="pricing-monthly">$797<span>/month</span></div>
+          <div class="pricing-setup">+ $397 one-time setup</div>
+        </div>
+        <ul class="pricing-features">
+          <li>Everything in Professional</li>
+          <li>Up to 3 locations covered</li>
+          <li>Each location gets its own AI front desk</li>
+          <li>One dashboard manages all locations</li>
+          <li>SMS appointment reminders</li>
+          <li>Custom AI scripts per location</li>
+          <li>Advanced reporting</li>
+          <li>Dedicated account manager</li>
+        </ul>
+        <a href="https://api.curatekai.com/widget/booking/EvrEIsnE6i1bLxEAAGJU" class="btn btn-outline pricing-cta">Contact Sales</a>
       </div>
 
     </div>
-
-    <div style="margin-top:2rem;padding:1.25rem 1.75rem;background:rgba(21,77,68,0.06);border-radius:10px;border-left:3px solid #154D44;max-width:800px;">
+    <div style="margin-top:2rem;padding:1.25rem 1.75rem;background:rgba(21,77,68,0.06);border-radius:10px;border-left:3px solid #154D44;max-width:1100px;margin-left:auto;margin-right:auto;">
       <p style="font-size:0.875rem;color:#47525C;line-height:1.65;"><strong style="color:#154D44;">No long-term contracts.</strong> Cancel anytime. We believe in earning your business every month through results. Not sure which plan fits? We'll recommend the right one on your demo call.</p>
     </div>
   </div>
@@ -378,22 +357,22 @@
 <section class="about" id="about">
   <div class="section-inner">
     <div class="section-label">About Curatek AI</div>
-    <h2 class="section-title">Built by Someone Who Understands Healthcare</h2>
+    <h2 class="section-title">Built by Someone Who Understands Service Businesses</h2>
     <div class="about-inner">
       <div class="about-text">
-       <p>Curatek AI was founded by Joseph Massaquoi, a healthcare professional with over 10 years of experience in clinical settings including dialysis care coordination and staff training.</p>
-        <p>Unlike generic AI agencies, we understand the unique challenges local service businesses face — staffing pressures, after-hours demands, and the constant battle against missed calls and lost customers.</p>
-       <p>We built Curatek AI specifically for local service businesses and independent healthcare practices because we know the industry inside out. Our background is your competitive advantage.</p>
+        <p>Curatek AI was founded by Joseph Massaquoi, a healthcare professional with over 10 years of experience in clinical settings including dialysis care coordination and staff training.</p>
+        <p>Unlike generic AI agencies, we understand the unique challenges local service businesses and independent healthcare practices face — staffing pressures, after-hours demands, and the constant battle against missed calls and lost customers.</p>
+        <p>We built Curatek AI because we know firsthand what it means to lose a customer to a missed call. Our experience is your competitive advantage.</p>
         <div class="about-highlight">
-         "We don't replace your existing systems — we just make sure you stop losing customers to missed calls."
+          "We don't replace your existing systems — we just make sure you stop losing customers to missed calls."
         </div>
       </div>
       <div>
         <div style="background:linear-gradient(135deg,var(--teal),var(--teal-light));border-radius:var(--radius);padding:2.5rem;color:var(--white);">
           <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);margin-bottom:1.5rem;">Why Curatek AI</div>
-          <div style="margin-bottom:1.25rem;"><strong style="display:block;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.07em;color:rgba(255,255,255,0.45);margin-bottom:0.3rem;">Domain Expertise</strong><p style="font-size:0.95rem;color:rgba(255,255,255,0.88);line-height:1.55;">10+ years in healthcare — we speak your language</p></div>
-         <div style="margin-bottom:1.25rem;"><strong style="display:block;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.07em;color:rgba(255,255,255,0.45);margin-bottom:0.3rem;">Industry-Specific Design</strong><p style="font-size:0.95rem;color:rgba(255,255,255,0.88);line-height:1.55;">Built for local service businesses and healthcare practices — not a generic tool</p></div>
-          <div><strong style="display:block;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.07em;color:rgba(255,255,255,0.45);margin-bottom:0.3rem;">HIPAA-Conscious</strong><p style="font-size:0.95rem;color:rgba(255,255,255,0.88);line-height:1.55;">Designed from day one to stay outside PHI handling</p></div>
+          <div style="margin-bottom:1.25rem;"><strong style="display:block;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.07em;color:rgba(255,255,255,0.45);margin-bottom:0.3rem;">Domain Expertise</strong><p style="font-size:0.95rem;color:rgba(255,255,255,0.88);line-height:1.55;">10+ years in service industries — we understand your challenges</p></div>
+          <div style="margin-bottom:1.25rem;"><strong style="display:block;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.07em;color:rgba(255,255,255,0.45);margin-bottom:0.3rem;">Industry-Specific Design</strong><p style="font-size:0.95rem;color:rgba(255,255,255,0.88);line-height:1.55;">Built for local service businesses — not a generic tool</p></div>
+          <div><strong style="display:block;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.07em;color:rgba(255,255,255,0.45);margin-bottom:0.3rem;">Zero Disruption</strong><p style="font-size:0.95rem;color:rgba(255,255,255,0.88);line-height:1.55;">Works alongside your existing systems from day one</p></div>
         </div>
       </div>
     </div>
@@ -407,13 +386,15 @@
     <h2 class="section-title">Common Questions</h2>
     <div class="faq-grid">
       <details><summary>Is my customer data safe?</summary><p>Yes. Curatek AI only collects the minimum information needed to connect a customer with your business — name, phone number, email, and preferred appointment time. We never store sensitive personal or business data. For healthcare practices, our system is designed with a HIPAA-conscious architecture keeping all clinical data inside your existing systems.</p></details>
-     <details><summary>Does this replace my front desk staff?</summary><p>No — and that's intentional. Curatek AI eliminates repetitive, low-value tasks like answering missed calls and sending reminders so your team can focus on customers who are right in front of them.</p></details>
-     <details><summary>Does it work with my existing software?</summary><p>Yes. Curatek AI works alongside any existing scheduling or management software you already use. We don't replace your systems — we capture leads before they reach them.</p></details>
+      <details><summary>Does this replace my staff?</summary><p>No — and that's intentional. Curatek AI eliminates repetitive, low-value tasks like answering missed calls and sending reminders so your team can focus on customers who are right in front of them.</p></details>
+      <details><summary>Does it work with my existing software?</summary><p>Yes. Curatek AI works alongside any existing scheduling or management software you already use. We don't replace your systems — we capture leads before they reach them.</p></details>
       <details><summary>How long does setup take?</summary><p>Most businesses are live within 48 hours. We handle the entire setup — you answer a few questions during onboarding and we take it from there.</p></details>
       <details><summary>What happens when the AI can't answer a question?</summary><p>The AI is trained to collect caller information and let them know a team member will call back. It never attempts to answer complex or technical questions — those always go to your staff.</p></details>
-      <details><summary>Which plan should I start with?</summary><p>If missed calls are your biggest problem start with Starter. If you also want a chat widget and Voice AI, Professional gives you the complete system. We'll recommend the right plan on your demo call based on your specific situation.</p></details>
+      <details><summary>Which plan should I start with?</summary><p>If missed calls are your biggest problem start with Starter at $197/month. If you also want a chat widget and Voice AI receptionist, Professional at $397/month gives you the complete system. We'll recommend the right plan on your demo call.</p></details>
       <details><summary>Is there a long-term contract?</summary><p>No. We operate on monthly retainers with no lock-in. We believe in earning your business every month through results.</p></details>
       <details><summary>What is your phone number?</summary><p>You can reach us at +1 (213) 845-0827 or email joe@curatekai.com. We typically respond within a few hours during business hours.</p></details>
+      <details><summary>What types of businesses do you work with?</summary><p>We work with any appointment-based local service business including HVAC companies, auto repair shops, healthcare practices, chiropractic clinics, medical spas, pet grooming businesses, cleaning services, and more. If your business relies on phone calls and appointments — Curatek AI is built for you.</p></details>
+      <details><summary>What is the Enterprise plan for?</summary><p>Enterprise is built for businesses with 2-3 locations. Each location gets its own AI voice receptionist, chat widget, and SMS system — all managed from one dashboard. At $797/month for up to 3 locations that's less than $270 per location. One captured job or appointment pays for the entire month.</p></details>
     </div>
   </div>
 </section>
@@ -421,7 +402,7 @@
 <!-- FINAL CTA -->
 <section class="final-cta" id="demo">
   <h2>Ready to Stop <span>Losing Customers?</span></h2>
- <p>See exactly how Curatek AI would work for your business. Free personalized demo — no commitment required.</p>
+  <p>See exactly how Curatek AI would work for your business. Free personalized demo — no commitment required.</p>
   <div class="final-cta-btns">
     <a href="https://app.curatekai.com/demo" class="btn btn-primary btn-lg">Book Your Free Demo Call</a>
     <a href="no_show_playbook.pdf" class="btn btn-ghost btn-lg">Download No-Show Playbook</a>
@@ -432,7 +413,7 @@
   <div style="max-width:1100px;margin:0 auto;padding:3rem 2rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;">
     <div>
       <div style="font-size:1.1rem;font-weight:700;color:rgba(255,255,255,0.9);margin-bottom:0.5rem;">Curatek <span style="color:#E98D50;">AI</span></div>
-     <p style="font-size:0.8rem;color:rgba(255,255,255,0.4);line-height:1.65;">AI-powered front desk automation for local service businesses and independent healthcare practices.</p>
+      <p style="font-size:0.8rem;color:rgba(255,255,255,0.4);line-height:1.65;">AI-powered front desk automation for local service businesses and independent healthcare practices.</p>
     </div>
     <div>
       <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.5);margin-bottom:0.75rem;">Contact</div>
@@ -458,9 +439,9 @@
     <p style="font-size:0.72rem;color:rgba(255,255,255,0.15);margin-top:0.5rem;">SMS reminders sent by Curatek AI on behalf of your business. Msg &amp; data rates may apply. Reply STOP to cancel.</p>
   </div>
 </footer>
-<script 
-  src="https://widgets.leadconnectorhq.com/loader.js"  
-  data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" 
+<script
+  src="https://widgets.leadconnectorhq.com/loader.js"
+  data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
   data-widget-id="69b816843e78291ce1e88f48">
 </script>
 </body>
