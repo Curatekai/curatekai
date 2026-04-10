@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Curatek AI automates patient reminders for independent home dialysis programs — supply orders, lab submissions, clinic visits, and water sample compliance. Built by a home dialysis preceptor.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curatek AI — Home Dialysis Program Automation</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #154D44;
+    --teal-light: #1a6358;
+    --slate: #47525C;
+    --orange: #E98D50;
+    --gold: #F5D298;
+    --bg-light: #D9DEE2;
+    --bg-dark: #0F1720;
+    --white: #ffffff;
+    --text-dark: #1a1f2e;
+    --text-muted: #6b7280;
+    --radius: 14px;
+    --radius-sm: 8px;
+    --red: #DC2626;
+    --green: #16a34a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: "Sora", system-ui, sans-serif; background: var(--white); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+
+  /* HEADER */
+  header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(21,77,68,0.1); padding: 0 2rem; }
+  .header-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  nav { display: flex; gap: 1.75rem; align-items: center; }
+  nav a { font-size: 0.875rem; font-weight: 500; color: var(--slate); text-decoration: none; transition: color 0.2s; }
+  nav a:hover { color: var(--teal); }
+
+  .btn { display: inline-block; padding: 0.6rem 1.4rem; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.875rem; text-decoration: none; cursor: pointer; border: none; transition: all 0.2s; font-family: inherit; }
+  .btn-primary { background: var(--orange); color: var(--white); box-shadow: 0 2px 12px rgba(233,141,80,0.35); }
+  .btn-primary:hover { background: #d97d40; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(233,141,80,0.45); }
+  .btn-outline { background: transparent; color: var(--teal); border: 1.5px solid var(--teal); }
+  .btn-outline:hover { background: var(--teal); color: var(--white); }
+  .btn-lg { padding: 0.9rem 2.2rem; font-size: 1rem; border-radius: var(--radius); }
+  .btn-ghost { background: rgba(255,255,255,0.1); color: var(--white); border: 1.5px solid rgba(255,255,255,0.3); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.2); }
+
+  /* HERO */
+  .hero { background: linear-gradient(135deg, var(--bg-dark) 0%, #0a2420 55%, #0F1720 100%); padding: 7rem 2rem 5rem; position: relative; overflow: hidden; }
+  .hero::before { content: ""; position: absolute; top: -200px; right: -200px; width: 700px; height: 700px; background: radial-gradient(circle, rgba(21,77,68,0.4) 0%, transparent 70%); pointer-events: none; }
+  .hero::after { content: ""; position: absolute; bottom: -100px; left: -100px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(233,141,80,0.06) 0%, transparent 70%); pointer-events: none; }
+  .hero-inner { max-width: 860px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(245,210,152,0.1); border: 1px solid rgba(245,210,152,0.22); color: var(--gold); padding: 0.4rem 1.1rem; border-radius: 100px; font-size: 0.8rem; font-weight: 500; margin-bottom: 1.75rem; letter-spacing: 0.03em; }
+  .hero h1 { font-size: clamp(2rem, 4.5vw, 3.4rem); font-weight: 700; color: var(--white); line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 1.3rem; }
+  .hero h1 em { font-style: normal; color: var(--gold); }
+  .hero p { font-size: 1.1rem; color: rgba(255,255,255,0.65); max-width: 620px; margin: 0 auto 2.5rem; line-height: 1.75; }
+  .hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .trust-line { font-size: 0.8rem; color: rgba(255,255,255,0.38); display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+  .trust-line span::before { content: "✓ "; color: var(--gold); }
+
+  /* CREDIBILITY BAR */
+  .cred-bar { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius); padding: 1.5rem 2rem; margin: 3rem auto 0; max-width: 780px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; text-align: center; }
+  .cred-item { }
+  .cred-number { font-size: 2rem; font-weight: 700; color: var(--orange); line-height: 1; }
+  .cred-label { font-size: 0.78rem; color: rgba(255,255,255,0.45); margin-top: 0.3rem; line-height: 1.4; }
+
+  /* SECTIONS */
+  section { padding: 5rem 2rem; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.65rem; }
+  .section-title { font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 700; color: var(--teal); letter-spacing: -0.025em; line-height: 1.18; margin-bottom: 1rem; }
+  .section-sub { font-size: 1rem; color: var(--text-muted); max-width: 580px; line-height: 1.75; }
+
+  /* PROBLEM */
+  .problem { background: var(--bg-light); }
+  .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .problem-card { background: var(--white); border-radius: var(--radius); padding: 1.75rem; box-shadow: 0 2px 16px rgba(0,0,0,0.06); border-top: 3px solid var(--orange); transition: transform 0.2s, box-shadow 0.2s; }
+  .problem-card:hover { transform: translateY(-4px); box-shadow: 0 10px 36px rgba(0,0,0,0.1); }
+  .problem-icon { font-size: 1.75rem; margin-bottom: 1rem; }
+  .problem-card h3 { font-size: 1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.5rem; }
+  .problem-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.65; }
+  .problem-cost { display: inline-block; margin-top: 0.75rem; background: rgba(220,38,38,0.08); color: var(--red); padding: 0.2rem 0.65rem; border-radius: 100px; font-size: 0.75rem; font-weight: 600; }
+
+  /* WORKFLOWS */
+  .workflow-section { background: var(--white); }
+  .workflow-tabs { display: flex; gap: 0.5rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+  .workflow-tab { padding: 0.55rem 1.25rem; border-radius: 100px; border: 1.5px solid var(--bg-light); font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.2s; color: var(--text-muted); background: var(--bg-light); }
+  .workflow-tab.active { background: var(--teal); color: var(--white); border-color: var(--teal); }
+  .workflow-content { display: none; }
+  .workflow-content.active { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  @media (max-width: 768px) { .workflow-content.active { grid-template-columns: 1fr; } }
+  .workflow-steps { display: flex; flex-direction: column; gap: 0; }
+  .wf-step { display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--bg-light); position: relative; }
+  .wf-step:last-child { border-bottom: none; }
+  .wf-num { width: 32px; height: 32px; background: var(--teal); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+  .wf-num.orange { background: var(--orange); }
+  .wf-num.green { background: var(--green); }
+  .wf-content h4 { font-size: 0.875rem; font-weight: 700; color: var(--teal); margin-bottom: 0.2rem; }
+  .wf-content p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.55; }
+  .workflow-sms-box { background: var(--bg-dark); border-radius: var(--radius); padding: 1.75rem; }
+  .workflow-sms-box h4 { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--orange); margin-bottom: 1rem; }
+  .sms-bubble { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.875rem; color: rgba(255,255,255,0.82); line-height: 1.65; font-style: italic; }
+  .sms-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; }
+  .sms-tag { background: rgba(21,77,68,0.4); color: var(--gold); padding: 0.2rem 0.65rem; border-radius: 100px; font-size: 0.72rem; font-weight: 600; }
+  .workflow-result { background: rgba(22,163,74,0.08); border: 1px solid rgba(22,163,74,0.2); border-radius: var(--radius-sm); padding: 1rem 1.25rem; margin-top: 1rem; }
+  .workflow-result p { font-size: 0.85rem; color: var(--green); font-weight: 600; }
+
+  /* COST SECTION */
+  .cost-section { background: var(--bg-dark); }
+  .cost-section .section-title { color: var(--white); }
+  .cost-section .section-sub { color: rgba(255,255,255,0.55); }
+  .cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+  @media (max-width: 700px) { .cost-grid { grid-template-columns: 1fr; } }
+  .cost-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); padding: 2rem; }
+  .cost-card h3 { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--orange); margin-bottom: 1.25rem; }
+  .cost-row { display: flex; justify-content: space-between; align-items: center; padding: 0.65rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .cost-row:last-child { border-bottom: none; }
+  .cost-row-label { font-size: 0.875rem; color: rgba(255,255,255,0.6); }
+  .cost-row-value { font-size: 0.9rem; font-weight: 700; color: var(--red); }
+  .cost-row-value.gold { color: var(--gold); }
+  .cost-row-value.green { color: #4ade80; }
+  .cost-total { margin-top: 1rem; padding: 1rem 1.25rem; background: rgba(233,141,80,0.1); border: 1px solid rgba(233,141,80,0.25); border-radius: var(--radius-sm); }
+  .cost-total p { font-size: 0.875rem; color: var(--gold); font-weight: 600; }
+  .roi-big { text-align: center; padding: 2.5rem; }
+  .roi-number { font-size: 5rem; font-weight: 700; color: var(--orange); line-height: 1; }
+  .roi-label { font-size: 1rem; color: rgba(255,255,255,0.55); margin-top: 0.5rem; }
+  .roi-sub { font-size: 0.85rem; color: rgba(255,255,255,0.35); margin-top: 0.75rem; line-height: 1.6; }
+
+  /* COMPLIANCE */
+  .compliance { background: var(--bg-light); }
+  .compliance-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 3rem; }
+  .comp-card { background: var(--white); border-radius: var(--radius); padding: 1.5rem; border-left: 4px solid var(--teal); box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+  .comp-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--teal); margin-bottom: 0.4rem; }
+  .comp-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* ABOUT */
+  .about { background: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
+  @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; } }
+  .about-text p { font-size: 0.95rem; color: var(--slate); line-height: 1.8; margin-bottom: 1rem; }
+  .about-quote { background: var(--bg-dark); border-radius: var(--radius); padding: 2rem; color: var(--white); margin-top: 1.5rem; position: relative; }
+  .about-quote::before { content: '"'; font-size: 4rem; color: var(--orange); line-height: 0.5; display: block; margin-bottom: 1rem; font-family: Georgia, serif; }
+  .about-quote p { font-size: 1rem; line-height: 1.75; color: rgba(255,255,255,0.85); font-style: italic; }
+  .about-quote cite { display: block; margin-top: 1rem; font-size: 0.8rem; color: var(--gold); font-style: normal; font-weight: 600; }
+  .credentials { display: flex; flex-direction: column; gap: 1rem; }
+  .cred-card { background: var(--bg-light); border-radius: var(--radius-sm); padding: 1.25rem 1.5rem; border-left: 3px solid var(--orange); }
+  .cred-card h4 { font-size: 0.85rem; font-weight: 700; color: var(--teal); margin-bottom: 0.2rem; }
+  .cred-card p { font-size: 0.82rem; color: var(--text-muted); }
+
+  /* SURVEY CTA */
+  .survey-cta { background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%); padding: 5rem 2rem; text-align: center; }
+  .survey-cta h2 { font-size: clamp(1.75rem, 3.5vw, 2.75rem); font-weight: 700; color: var(--white); letter-spacing: -0.025em; margin-bottom: 1rem; }
+  .survey-cta p { font-size: 1rem; color: rgba(255,255,255,0.7); max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.75; }
+  .survey-cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  /* FAQ */
+  .faq { background: var(--bg-light); }
+  .faq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(440px, 1fr)); gap: 1rem; margin-top: 3rem; }
+  @media (max-width: 560px) { .faq-grid { grid-template-columns: 1fr; } }
+  details { background: var(--white); border-radius: var(--radius-sm); padding: 1.25rem 1.5rem; cursor: pointer; }
+  details[open] { background: rgba(21,77,68,0.04); }
+  summary { font-size: 0.9rem; font-weight: 600; color: var(--teal); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 1rem; user-select: none; }
+  summary::after { content: "+"; font-size: 1.2rem; color: var(--orange); flex-shrink: 0; }
+  details[open] summary::after { content: "−"; }
+  details p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.72; margin-top: 0.75rem; }
+
+  /* FINAL CTA */
+  .final-cta { background: var(--bg-dark); text-align: center; padding: 6rem 2rem; position: relative; overflow: hidden; }
+  .final-cta::before { content: ""; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(21,77,68,0.25) 0%, transparent 70%); pointer-events: none; }
+  .final-cta h2 { font-size: clamp(1.75rem, 3.5vw, 2.8rem); font-weight: 700; color: var(--white); letter-spacing: -0.025em; margin-bottom: 0.75rem; position: relative; }
+  .final-cta h2 span { color: var(--gold); }
+  .final-cta p { font-size: 1rem; color: rgba(255,255,255,0.55); margin-bottom: 2.5rem; position: relative; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .final-cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
+
+  footer { background: var(--bg-dark); border-top: 1px solid rgba(255,255,255,0.05); padding: 2rem; text-align: center; }
+  footer a { color: rgba(255,255,255,0.45); text-decoration: none; }
+
+  @media (max-width: 768px) { .nav-links { display: none; } .cred-bar { grid-template-columns: 1fr; gap: 1rem; } }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-inner > * { animation: fadeUp 0.7s ease both; }
+  .hero-inner > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-inner > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-inner > *:nth-child(3) { animation-delay: 0.3s; }
+  .hero-inner > *:nth-child(4) { animation-delay: 0.4s; }
+  .hero-inner > *:nth-child(5) { animation-delay: 0.5s; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="/"><img src="curatek-logo.png" alt="Curatek AI" style="height:48px;width:auto;"></a>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="#problems">The Problem</a>
+      <a href="#workflows">Workflows</a>
+      <a href="#compliance">Compliance</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+      <a href="/survey.html" class="btn btn-outline">Take Survey</a>
+      <a href="https://api.curatekai.com/widget/booking/EvrEIsnE6i1bLxEAAGJU" class="btn btn-primary">Book a Demo</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">🏥 Built for Independent Home Dialysis Programs</div>
+    <h1>Built by a Home Dialysis Preceptor.<br><em>Designed for the Problems We Live Every Day.</em></h1>
+    <p>Curatek AI automates the four most time-consuming workflows in home dialysis — supply order reminders, lab submissions, clinic visit follow-up, and state-regulated water sample tracking. No EMR integration. No IT team needed. Live in 48 hours.</p>
+    <div class="hero-ctas">
+      <a href="/survey.html" class="btn btn-primary btn-lg">Take the 3-Minute Survey</a>
+      <a href="https://api.curatekai.com/widget/booking/EvrEIsnE6i1bLxEAAGJU" class="btn btn-ghost btn-lg">Book a Discovery Call</a>
+    </div>
+    <div class="trust-line">
+      <span>Zero PHI collected</span>
+      <span>HIPAA compliant — BAA available</span>
+      <span>No EMR integration required</span>
+      <span>Live in 48 hours</span>
+    </div>
+    <div class="cred-bar">
+      <div class="cred-item">
+        <div class="cred-number">10+</div>
+        <div class="cred-label">Years in home dialysis<br>HHD & PD</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-number">$48K</div>
+        <div class="cred-label">Average annual cost of<br>emergency supply orders</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-number">11x</div>
+        <div class="cred-label">Return on investment<br>per department</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE PROBLEM -->
+<section class="problem" id="problems">
+  <div class="section-inner">
+    <div class="section-label">The Silent Drain</div>
+    <h2 class="section-title">Four Problems Costing Your Program Every Month</h2>
+    <p class="section-sub">Independent home dialysis programs spend thousands of staff hours per year on manual follow-up that should be fully automated.</p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-icon">📅</div>
+        <h3>Monthly Clinic Visit Reminders</h3>
+        <p>Staff manually call both HHD and PD patients before every monthly clinic visit. Hours of front desk time consumed every week on repetitive calls.</p>
+        <span class="problem-cost">High staff time cost</span>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">🧪</div>
+        <h3>Lab Submission Tracking</h3>
+        <p>HHD patients collect labs at home during week one of every month. PD patients come in one week before their clinic visit. Both require manual tracking and follow-up to ensure compliance.</p>
+        <span class="problem-cost">Missed labs delay clinical decisions</span>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">📦</div>
+        <h3>Supply Order Reminders</h3>
+        <p>When patients forget to order supplies on time emergency off-schedule orders are triggered — costing $500–600 per incident, happening 2–3 times per week in a typical 40-patient department.</p>
+        <span class="problem-cost">$48,000–$86,400 per year</span>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">💧</div>
+        <h3>Adequacy & Water Sample Compliance</h3>
+        <p>HHD monthly KT/V adequacy (2.0+ standard), plus PAK, SAK, and tap water samples collected on quarterly, semi-annual, and annual schedules. State regulated — non-compliance carries consequences.</p>
+        <span class="problem-cost">State regulatory risk</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKFLOWS -->
+<section class="workflow-section" id="workflows">
+  <div class="section-inner">
+    <div class="section-label">The Solution</div>
+    <h2 class="section-title">Four Automated Workflows — Zero Manual Follow-Up</h2>
+    <p class="section-sub">Curatek AI handles every reminder automatically. Staff only gets involved when a patient needs real help.</p>
+
+    <div class="workflow-tabs" style="margin-top:2.5rem;">
+      <button class="workflow-tab active" onclick="showWorkflow(0)">📅 Clinic Visits</button>
+      <button class="workflow-tab" onclick="showWorkflow(1)">🧪 Lab Reminders</button>
+      <button class="workflow-tab" onclick="showWorkflow(2)">📦 Supply Orders</button>
+      <button class="workflow-tab" onclick="showWorkflow(3)">💧 Adequacy & Water</button>
+    </div>
+
+    <!-- WORKFLOW 1 -->
+    <div class="workflow-content active" id="wf-0">
+      <div class="workflow-steps">
+        <h3 style="font-size:1.1rem;font-weight:700;color:var(--teal);margin-bottom:1rem;">Monthly Clinic Visit Reminder — HHD & PD</h3>
+        <div class="wf-step"><div class="wf-num">1</div><div class="wf-content"><h4>Trigger</h4><p>7 days before scheduled monthly clinic visit — fires automatically for both HHD and PD patients.</p></div></div>
+        <div class="wf-step"><div class="wf-num">2</div><div class="wf-content"><h4>7-Day SMS Sent</h4><p>Automated reminder sent from clinic phone number. Patient replies YES to confirm or calls to reschedule.</p></div></div>
+        <div class="wf-step"><div class="wf-num orange">3</div><div class="wf-content"><h4>3-Day Follow-Up</h4><p>If no confirmation received — second reminder sent automatically. No staff involvement required.</p></div></div>
+        <div class="wf-step"><div class="wf-num orange">4</div><div class="wf-content"><h4>1-Day Final Reminder</h4><p>Final SMS sent the day before the visit with confirmation prompt.</p></div></div>
+        <div class="wf-step"><div class="wf-num green">5</div><div class="wf-content"><h4>Staff Alert if No Response</h4><p>If patient never confirms — staff notified immediately for personal follow-up. Nothing falls through the cracks.</p></div></div>
+        <div class="workflow-result"><p>✓ Result: No-shows reduced. Staff freed from routine reminder calls.</p></div>
+      </div>
+      <div class="workflow-sms-box">
+        <h4>Example SMS Message</h4>
+        <div class="sms-bubble">"This is a message from [Clinic Name]. Your monthly clinic visit is scheduled for [date]. Please reply YES to confirm or call us to reschedule."</div>
+        <div class="sms-bubble">"Reminder from [Clinic Name]: Your clinic visit is in 3 days on [date]. Please reply YES to confirm."</div>
+        <div class="sms-tags">
+          <span class="sms-tag">Clinic name only</span>
+          <span class="sms-tag">Zero PHI</span>
+          <span class="sms-tag">HIPAA compliant</span>
+          <span class="sms-tag">No EMR needed</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- WORKFLOW 2 -->
+    <div class="workflow-content" id="wf-1">
+      <div class="workflow-steps">
+        <h3 style="font-size:1.1rem;font-weight:700;color:var(--teal);margin-bottom:0.5rem;">Lab Submission Reminders — HHD & PD</h3>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem;">Two separate workflows — one for each modality.</p>
+        <div class="wf-step"><div class="wf-num">1</div><div class="wf-content"><h4>HHD Trigger — 1st of Every Month</h4><p>HHD patients reminded to collect and submit labs during week one. Early collection allows redraw time before monthly clinic visit if adequacy is not met.</p></div></div>
+        <div class="wf-step"><div class="wf-num">2</div><div class="wf-content"><h4>HHD Week 1 SMS</h4><p>Patient reminded to collect labs and mail or bring to clinic for shipment. Replies DONE when submitted.</p></div></div>
+        <div class="wf-step"><div class="wf-num orange">3</div><div class="wf-content"><h4>PD Trigger — 10 Days Before Clinic Visit</h4><p>PD patients reminded about clinic lab draw scheduled one week before their monthly visit.</p></div></div>
+        <div class="wf-step"><div class="wf-num orange">4</div><div class="wf-content"><h4>PD Quarterly Adequacy Reminder</h4><p>PD adequacy testing required quarterly — automated reminder sent when due.</p></div></div>
+        <div class="wf-step"><div class="wf-num green">5</div><div class="wf-content"><h4>Staff Alert if No Submission</h4><p>Staff notified automatically if no DONE reply received — possible redraw support needed.</p></div></div>
+        <div class="workflow-result"><p>✓ Result: Lab compliance improved. Redraw window protected before clinic visit.</p></div>
+      </div>
+      <div class="workflow-sms-box">
+        <h4>Example SMS Messages</h4>
+        <div class="sms-bubble">"This is a message from [Clinic Name]. It is time to collect your monthly lab. Please collect and mail or bring your lab to the clinic this week. Reply DONE when submitted."</div>
+        <div class="sms-bubble">"This is a message from [Clinic Name]. Your lab draw at the clinic is scheduled for [date] — one week before your monthly visit. Reply YES to confirm."</div>
+        <div class="sms-tags">
+          <span class="sms-tag">HHD workflow</span>
+          <span class="sms-tag">PD workflow</span>
+          <span class="sms-tag">Redraw window</span>
+          <span class="sms-tag">Zero PHI</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- WORKFLOW 3 -->
+    <div class="workflow-content" id="wf-2">
+      <div class="workflow-steps">
+        <h3 style="font-size:1.1rem;font-weight:700;color:var(--teal);margin-bottom:1rem;">Supply Order Reminders — The Highest Cost Problem</h3>
+        <div class="wf-step"><div class="wf-num">1</div><div class="wf-content"><h4>Trigger — 7 Days Before Order Deadline</h4><p>Automated reminder fires before the order deadline — giving patients enough time to place their order without rushing.</p></div></div>
+        <div class="wf-step"><div class="wf-num">2</div><div class="wf-content"><h4>7-Day SMS Sent</h4><p>Patient reminded to place their supply order by the deadline. Replies DONE when ordered.</p></div></div>
+        <div class="wf-step"><div class="wf-num orange">3</div><div class="wf-content"><h4>3-Day Follow-Up if No Reply</h4><p>Second reminder sent automatically if no DONE confirmation received. Zero staff involvement.</p></div></div>
+        <div class="wf-step"><div class="wf-num orange">4</div><div class="wf-content"><h4>1-Day Final Alert</h4><p>Final reminder sent the day before deadline. Staff notified simultaneously — last chance before emergency order is needed.</p></div></div>
+        <div class="wf-step"><div class="wf-num green">5</div><div class="wf-content"><h4>Emergency Order Avoided</h4><p>Patient places order on time. $500–600 emergency order cost eliminated.</p></div></div>
+        <div class="workflow-result"><p>✓ Result: Emergency supply orders reduced by 50%+. $48,000/year saved per department.</p></div>
+      </div>
+      <div class="workflow-sms-box">
+        <h4>Example SMS Messages</h4>
+        <div class="sms-bubble">"This is a message from [Clinic Name]. It is time to order your dialysis supplies. Please place your order by [date] to avoid delays. Reply DONE when ordered or HELP if you need assistance."</div>
+        <div class="sms-bubble">"Reminder from [Clinic Name]: Your supply order deadline is tomorrow. Please order today to avoid any disruption to your treatment. Reply DONE when placed."</div>
+        <div class="sms-tags">
+          <span class="sms-tag">$500–600 saved per incident</span>
+          <span class="sms-tag">2–3x per week prevented</span>
+          <span class="sms-tag">Zero PHI</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- WORKFLOW 4 -->
+    <div class="workflow-content" id="wf-3">
+      <div class="workflow-steps">
+        <h3 style="font-size:1.1rem;font-weight:700;color:var(--teal);margin-bottom:0.25rem;">Adequacy & Water Sample Compliance Tracker</h3>
+        <p style="font-size:0.82rem;color:var(--red);font-weight:600;margin-bottom:1rem;">⚠️ State Regulated — Non-compliance carries regulatory consequences</p>
+        <div class="wf-step"><div class="wf-num">1</div><div class="wf-content"><h4>Scheduled Trigger by Collection Type</h4><p>Each collection type fires on its own schedule — monthly KT/V, quarterly PAK/SAK, semi-annual and annual tap water samples.</p></div></div>
+        <div class="wf-step"><div class="wf-num">2</div><div class="wf-content"><h4>SMS Reminder Sent to Patient</h4><p>Patient reminded to collect and submit — KT/V monthly adequacy, PAK, SAK, tap water, or PD adequacy quarterly.</p></div></div>
+        <div class="wf-step"><div class="wf-num orange">3</div><div class="wf-content"><h4>Patient Replies DONE</h4><p>Patient confirms collection completed. Timestamp logged automatically — building your audit trail.</p></div></div>
+        <div class="wf-step"><div class="wf-num orange">4</div><div class="wf-content"><h4>48-Hour Follow-Up if No Reply</h4><p>Second reminder sent automatically. Staff notified if still no response.</p></div></div>
+        <div class="wf-step"><div class="wf-num green">5</div><div class="wf-content"><h4>Audit Trail Logged</h4><p>Every reminder sent and every patient confirmation received is timestamped and logged — inspection-ready compliance documentation on demand.</p></div></div>
+        <div class="workflow-result"><p>✓ Result: State compliance maintained. Audit trail built automatically. Zero manual charting.</p></div>
+      </div>
+      <div class="workflow-sms-box">
+        <h4>Collections Tracked Automatically</h4>
+        <div class="sms-bubble">"This is a message from [Clinic Name]. It is time to collect your monthly KT/V adequacy sample. Please collect and submit this week. Reply DONE when completed or HELP if you need assistance."</div>
+        <div class="sms-bubble">"Reminder from [Clinic Name]: Your quarterly water sample collection (PAK/SAK/tap water) is due this month. Reply DONE when collected."</div>
+        <div class="sms-tags">
+          <span class="sms-tag">Monthly KT/V</span>
+          <span class="sms-tag">Quarterly PAK/SAK</span>
+          <span class="sms-tag">Tap water semi/annual</span>
+          <span class="sms-tag">Audit trail</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COST & ROI -->
+<section class="cost-section" id="roi">
+  <div class="section-inner">
+    <div class="section-label" style="color:var(--gold);">The Numbers</div>
+    <h2 class="section-title">The Math Is Simple</h2>
+    <p class="section-sub">One avoided emergency supply order per month pays for the entire system — 15 times over.</p>
+    <div class="cost-grid">
+      <div class="cost-card">
+        <h3>Current Annual Cost — Manual Follow-Up</h3>
+        <div class="cost-row"><span class="cost-row-label">Emergency supply orders (conservative)</span><span class="cost-row-value">$48,000–$86,400</span></div>
+        <div class="cost-row"><span class="cost-row-label">Staff time on manual reminder calls</span><span class="cost-row-value">$6,600</span></div>
+        <div class="cost-row"><span class="cost-row-label">Missed lab rescheduling delays</span><span class="cost-row-value" style="color:var(--text-muted);">Unquantified</span></div>
+        <div class="cost-row"><span class="cost-row-label">Regulatory risk from missed water samples</span><span class="cost-row-value" style="color:var(--text-muted);">Significant</span></div>
+        <div class="cost-total"><p>Total conservative estimate: $54,600–$93,000/year per department</p></div>
+      </div>
+      <div class="cost-card" style="display:flex;flex-direction:column;justify-content:center;">
+        <div class="roi-big">
+          <div class="roi-number">11x</div>
+          <div class="roi-label">Return on Investment</div>
+          <div class="roi-sub">Curatek AI costs $397/month — $4,764/year.<br>Conservative savings: $54,600/year.<br>Every $1 spent saves $11.</div>
+        </div>
+        <div class="cost-row" style="border-top:1px solid rgba(255,255,255,0.08);padding-top:1rem;"><span class="cost-row-label">Monthly cost of Curatek AI</span><span class="cost-row-value green">$397/month</span></div>
+        <div class="cost-row"><span class="cost-row-label">Annual cost of Curatek AI</span><span class="cost-row-value green">$4,764/year</span></div>
+        <div class="cost-row"><span class="cost-row-label">Conservative annual savings</span><span class="cost-row-value gold">$54,600+</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPLIANCE -->
+<section class="compliance" id="compliance">
+  <div class="section-inner">
+    <div class="section-label">Data Security</div>
+    <h2 class="section-title">Built with HIPAA in Mind — From Day One</h2>
+    <p class="section-sub">We understand that independent home dialysis programs are protective of their data. Here's exactly how Curatek AI keeps you safe.</p>
+    <div class="compliance-grid">
+      <div class="comp-card">
+        <h4>HIPAA Compliant Platform</h4>
+        <p>Powered by GoHighLevel — a HIPAA-compliant platform used by thousands of healthcare organizations. Business Associate Agreement (BAA) available upon request.</p>
+      </div>
+      <div class="comp-card">
+        <h4>Zero PHI Collected</h4>
+        <p>All messages reference clinic name only. Patient names, diagnoses, lab results, treatment records, and insurance details are never used, stored, or transmitted.</p>
+      </div>
+      <div class="comp-card">
+        <h4>No EMR Integration Required</h4>
+        <p>Zero connection to your existing systems. No IT approval needed. No access to any internal infrastructure. Curatek AI operates completely outside your EMR.</p>
+      </div>
+      <div class="comp-card">
+        <h4>Clinic Phone Number Only</h4>
+        <p>All SMS sent from your clinic's own phone number. Patients see a familiar number — not an unknown third-party sender. Trust maintained.</p>
+      </div>
+      <div class="comp-card">
+        <h4>Minimum Data Principle</h4>
+        <p>Only patient phone numbers are stored — the absolute minimum necessary to send reminders. Nothing else is collected at any point in the workflow.</p>
+      </div>
+      <div class="comp-card">
+        <h4>Full Audit Trail</h4>
+        <p>Every reminder sent and every patient response is automatically timestamped and logged — providing inspection-ready compliance documentation on demand for state audits.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-label">Why Curatek AI</div>
+    <h2 class="section-title">Built by Someone Who Lived This Work</h2>
+    <div class="about-grid">
+      <div>
+        <div class="about-text">
+          <p>Curatek AI was founded by Joseph Massaquoi — a PCT III Preceptor with nearly 10 years of experience at Fresenius Medical Care Home Therapy. He trained patients and clinical staff on home hemodialysis using NxStage machines and peritoneal dialysis using Liberty Cyclers.</p>
+          <p>Joseph built Curatek AI because he saw firsthand how much time home therapy staff spend on manual follow-up calls — time that should be spent on actual patient care. He knows the difference between a PAK and a SAK. He knows what happens when a patient forgets to order supplies. He knows the stress of state inspection season.</p>
+          <p>This is not a generic automation tool built by someone who has never seen a dialysis machine. This is a solution built from the inside.</p>
+        </div>
+        <div class="about-quote">
+          <p>I built this because I lived the problem. Every week we were chasing patients for labs, supply orders, and water samples. There had to be a better way.</p>
+          <cite>— Joseph Massaquoi, Founder · Curatek AI · PCT III Preceptor, FMC Home Therapy</cite>
+        </div>
+      </div>
+      <div class="credentials">
+        <div class="cred-card">
+          <h4>PCT III Preceptor</h4>
+          <p>Fresenius Medical Care Home Therapy Department — nearly 10 years training patients and clinical staff</p>
+        </div>
+        <div class="cred-card">
+          <h4>NxStage Home Hemodialysis</h4>
+          <p>Certified trainer for home hemodialysis patients — understands HHD workflow complexity firsthand</p>
+        </div>
+        <div class="cred-card">
+          <h4>Liberty Cycler PD</h4>
+          <p>Experienced in peritoneal dialysis patient training — including adequacy monitoring and supply management</p>
+        </div>
+        <div class="cred-card">
+          <h4>Water Sample Compliance</h4>
+          <p>Deep familiarity with PAK, SAK, and tap water collection schedules and state regulatory requirements</p>
+        </div>
+        <div class="cred-card">
+          <h4>WEGATHIS LLC</h4>
+          <p>Bronx, New York · joe@curatekai.com · +1 (213) 845-0827</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SURVEY CTA -->
+<section class="survey-cta" id="survey">
+  <h2>Help Us Build the Right Solution<br>for Your Program</h2>
+  <p>Before we pitch anything — we want to understand your specific challenges. Take our 3-minute survey and tell us exactly what your home therapy program is struggling with.</p>
+  <div class="survey-cta-btns">
+    <a href="/survey.html" class="btn btn-primary btn-lg">Take the 3-Minute Survey</a>
+    <a href="https://api.curatekai.com/widget/booking/EvrEIsnE6i1bLxEAAGJU" class="btn btn-ghost btn-lg">Book a Discovery Call</a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-inner">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Common Questions</h2>
+    <div class="faq-grid">
+      <details><summary>Does this integrate with our EMR?</summary><p>No — and that's intentional. Curatek AI operates completely outside your existing systems. No integration required, no IT approval needed, no access to any internal data. We capture only the patient's phone number and send reminders from your clinic number.</p></details>
+      <details><summary>Is this HIPAA compliant?</summary><p>Yes. Powered by GoHighLevel — a HIPAA-compliant platform. We can provide a signed Business Associate Agreement (BAA) before any deployment. All messages reference clinic name only. Zero PHI is used or stored at any point.</p></details>
+      <details><summary>How long does setup take?</summary><p>Most programs are live within 48 hours. We handle the entire configuration — you answer a few questions about your patient schedules and supply order timelines during onboarding and we take it from there.</p></details>
+      <details><summary>What happens if a patient doesn't respond?</summary><p>The system sends follow-up reminders automatically. If a patient still doesn't respond after the follow-up window — your staff receives an immediate notification so a human can step in. Nothing falls through the cracks.</p></details>
+      <details><summary>How much does it cost?</summary><p>Pricing is based on program size and workflow complexity. Contact us for a custom quote. For a 40-patient department the system typically costs less than one avoided emergency supply order per month.</p></details>
+      <details><summary>Can you track different schedules for HHD and PD?</summary><p>Yes — absolutely. HHD and PD patients have completely separate workflows for lab reminders, adequacy tracking, and supply orders. The system handles both modalities independently with the right timing for each.</p></details>
+      <details><summary>What about water sample tracking?</summary><p>Water sample tracking is built in — PAK, SAK, and tap water samples on quarterly, semi-annual, and annual schedules. Every reminder and patient confirmation is timestamped and logged automatically for state inspection readiness.</p></details>
+      <details><summary>Is there a long-term contract?</summary><p>No. We operate on monthly agreements with no lock-in. We believe in earning your business every month through results — not contracts.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2>Ready to Stop the <span>Manual Follow-Up?</span></h2>
+  <p>Let's start with a conversation about your specific program. No pitch — just a genuine discussion from someone who understands this work.</p>
+  <div class="final-cta-btns">
+    <a href="/survey.html" class="btn btn-primary btn-lg">Take the 3-Minute Survey</a>
+    <a href="https://api.curatekai.com/widget/booking/EvrEIsnE6i1bLxEAAGJU" class="btn btn-ghost btn-lg">Book a Discovery Call</a>
+  </div>
+</section>
+
+<footer>
+  <div style="max-width:1100px;margin:0 auto;padding:3rem 2rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;">
+    <div>
+      <div style="font-size:1.1rem;font-weight:700;color:rgba(255,255,255,0.9);margin-bottom:0.5rem;">Curatek <span style="color:#E98D50;">AI</span></div>
+      <p style="font-size:0.8rem;color:rgba(255,255,255,0.4);line-height:1.65;">AI-powered patient reminder automation for independent home dialysis programs.</p>
+    </div>
+    <div>
+      <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.5);margin-bottom:0.75rem;">Contact</div>
+      <p style="font-size:0.82rem;color:rgba(255,255,255,0.35);line-height:1.8;">Joseph Massaquoi<br>WEGATHIS LLC<br>Bronx, New York 10458<br>+1 (213) 845-0827<br>joe@curatekai.com</p>
+    </div>
+    <div>
+      <div style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.5);margin-bottom:0.75rem;">Links</div>
+      <p style="font-size:0.82rem;line-height:1.8;">
+        <a href="/" style="color:rgba(255,255,255,0.35);text-decoration:none;display:block;">Home</a>
+        <a href="/survey.html" style="color:rgba(255,255,255,0.35);text-decoration:none;display:block;">Take the Survey</a>
+        <a href="/privacy.html" style="color:rgba(255,255,255,0.35);text-decoration:none;display:block;">Privacy Policy</a>
+        <a href="/terms.html" style="color:rgba(255,255,255,0.35);text-decoration:none;display:block;">Terms of Service</a>
+      </p>
+    </div>
+  </div>
+  <div style="border-top:1px solid rgba(255,255,255,0.08);padding:1.5rem 2rem;text-align:center;">
+    <p style="font-size:0.78rem;color:rgba(255,255,255,0.25);">© 2026 Curatek AI · WEGATHIS LLC · All rights reserved</p>
+    <p style="font-size:0.72rem;color:rgba(255,255,255,0.15);margin-top:0.4rem;">SMS reminders sent by Curatek AI on behalf of your clinic. Msg & data rates may apply. Reply STOP to cancel.</p>
+  </div>
+</footer>
+
+<script>
+function showWorkflow(index) {
+  document.querySelectorAll('.workflow-content').forEach((el, i) => {
+    el.classList.toggle('active', i === index);
+  });
+  document.querySelectorAll('.workflow-tab').forEach((el, i) => {
+    el.classList.toggle('active', i === index);
+  });
+}
+</script>
+
+</body>
+</html>
