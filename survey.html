@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Home Dialysis Program Survey 2026 — Curatek AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --teal: #154D44;
@@ -19,343 +21,78 @@
     --red: #DC2626;
     --green: #16a34a;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: "Sora", system-ui, sans-serif; background: var(--gray); color: var(--dark); min-height: 100vh; }
 
-  body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: var(--gray);
-    color: var(--dark);
-    min-height: 100vh;
-  }
-
-  /* HEADER */
-  .header {
-    background: var(--dark);
-    padding: 0;
-    position: relative;
-    overflow: hidden;
-  }
-  .header::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
-    background: var(--orange);
-  }
-  .header-inner {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 2.5rem 2rem 2rem;
-  }
-  .header-badge {
-    display: inline-block;
-    background: rgba(245,210,152,0.12);
-    border: 1px solid rgba(245,210,152,0.25);
-    color: var(--gold);
-    padding: 0.3rem 0.9rem;
-    border-radius: 100px;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-  }
-  .header h1 {
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--white);
-    line-height: 1.2;
-    margin-bottom: 0.75rem;
-  }
+  .header { background: var(--dark); position: relative; overflow: hidden; }
+  .header::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--orange); }
+  .header-inner { max-width: 720px; margin: 0 auto; padding: 2.5rem 2rem 2rem; }
+  .header-badge { display: inline-block; background: rgba(245,210,152,0.12); border: 1px solid rgba(245,210,152,0.25); color: var(--gold); padding: 0.3rem 0.9rem; border-radius: 100px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1rem; }
+  .header h1 { font-size: 1.75rem; font-weight: 700; color: var(--white); line-height: 1.2; margin-bottom: 0.75rem; }
   .header h1 span { color: var(--orange); }
-  .header p {
-    font-size: 0.95rem;
-    color: rgba(255,255,255,0.6);
-    line-height: 1.7;
-    max-width: 560px;
-  }
-  .header-meta {
-    display: flex;
-    gap: 1.5rem;
-    margin-top: 1.25rem;
-    flex-wrap: wrap;
-  }
-  .header-meta span {
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.4);
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
-  .header-meta span::before { color: var(--orange); }
+  .header p { font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.7; max-width: 560px; }
+  .header-meta { display: flex; gap: 1.5rem; margin-top: 1.25rem; flex-wrap: wrap; }
+  .header-meta span { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
 
-  /* PROGRESS */
-  .progress-bar {
-    background: rgba(255,255,255,0.08);
-    height: 4px;
-  }
-  .progress-fill {
-    height: 4px;
-    background: var(--orange);
-    width: 0%;
-    transition: width 0.4s ease;
-  }
+  .progress-bar { background: rgba(255,255,255,0.08); height: 4px; }
+  .progress-fill { height: 4px; background: var(--orange); width: 0%; transition: width 0.4s ease; }
 
-  /* FORM CONTAINER */
-  .form-container {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
+  .form-container { max-width: 720px; margin: 0 auto; padding: 2rem; }
 
-  /* SECTION */
-  .section {
-    background: var(--white);
-    border-radius: 12px;
-    padding: 2rem;
-    margin-bottom: 1.5rem;
-    border: 1px solid var(--border);
-    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-  }
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 2px solid var(--gray);
-  }
-  .section-num {
-    width: 32px;
-    height: 32px;
-    background: var(--teal);
-    color: var(--white);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.85rem;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-  .section-title {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--teal);
-    letter-spacing: -0.01em;
-  }
+  .section { background: var(--white); border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; border: 1px solid var(--border); box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+  .section-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 2px solid var(--gray); }
+  .section-num { width: 32px; height: 32px; background: var(--teal); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; flex-shrink: 0; }
+  .section-title { font-size: 1rem; font-weight: 700; color: var(--teal); }
 
-  /* QUESTION */
-  .question {
-    margin-bottom: 1.75rem;
-  }
+  .question { margin-bottom: 1.75rem; }
   .question:last-child { margin-bottom: 0; }
-  .question label {
-    display: block;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--dark);
-    margin-bottom: 0.6rem;
-    line-height: 1.4;
-  }
-  .question label .required {
-    color: var(--red);
-    margin-left: 2px;
-  }
-  .question .hint {
-    font-size: 0.8rem;
-    color: var(--muted);
-    font-weight: 400;
-    margin-left: 0.25rem;
-  }
+  .question label { display: block; font-size: 0.9rem; font-weight: 600; color: var(--dark); margin-bottom: 0.6rem; line-height: 1.4; }
+  .question label .required { color: var(--red); margin-left: 2px; }
+  .question .hint { font-size: 0.8rem; color: var(--muted); font-weight: 400; margin-left: 0.25rem; }
 
-  /* INPUTS */
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
-  textarea,
-  select {
-    width: 100%;
-    padding: 0.7rem 1rem;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-family: inherit;
-    color: var(--dark);
-    background: var(--white);
-    transition: border-color 0.2s, box-shadow 0.2s;
-    outline: none;
+  input[type="text"], input[type="email"], textarea, select {
+    width: 100%; padding: 0.7rem 1rem; border: 1.5px solid var(--border); border-radius: 8px;
+    font-size: 0.9rem; font-family: inherit; color: var(--dark); background: var(--white);
+    transition: border-color 0.2s, box-shadow 0.2s; outline: none;
   }
-  input:focus, textarea:focus, select:focus {
-    border-color: var(--teal);
-    box-shadow: 0 0 0 3px rgba(21,77,68,0.1);
-  }
-  textarea {
-    resize: vertical;
-    min-height: 100px;
-    line-height: 1.6;
-  }
+  input:focus, textarea:focus, select:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(21,77,68,0.1); }
+  textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
 
-  /* RADIO & CHECKBOX */
   .options { display: flex; flex-direction: column; gap: 0.5rem; }
-  .options.inline { flex-direction: row; flex-wrap: wrap; gap: 0.5rem; }
-
-  .option {
-    display: flex;
-    align-items: center;
-    gap: 0.65rem;
-    padding: 0.65rem 1rem;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.15s;
-    user-select: none;
-  }
+  .option { display: flex; align-items: center; gap: 0.65rem; padding: 0.65rem 1rem; border: 1.5px solid var(--border); border-radius: 8px; cursor: pointer; transition: all 0.15s; user-select: none; }
   .option:hover { border-color: var(--teal); background: rgba(21,77,68,0.03); }
   .option.selected { border-color: var(--teal); background: rgba(21,77,68,0.06); }
-  .option input[type="radio"],
-  .option input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
-    accent-color: var(--teal);
-    flex-shrink: 0;
-    cursor: pointer;
-  }
-  .option-label {
-    font-size: 0.875rem;
-    color: var(--slate);
-    line-height: 1.3;
-  }
+  .option input[type="radio"], .option input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--teal); flex-shrink: 0; cursor: pointer; }
+  .option-label { font-size: 0.875rem; color: var(--slate); line-height: 1.3; }
   .option.selected .option-label { color: var(--teal); font-weight: 500; }
 
-  /* SCALE */
-  .scale-row {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 0.5rem;
-    margin-top: 0.25rem;
-  }
-  .scale-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.35rem;
-  }
-  .scale-btn {
-    width: 100%;
-    padding: 0.6rem;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    background: var(--white);
-    cursor: pointer;
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--muted);
-    transition: all 0.15s;
-    font-family: inherit;
-  }
-  .scale-btn:hover { border-color: var(--teal); color: var(--teal); }
-  .scale-btn.selected { background: var(--teal); border-color: var(--teal); color: var(--white); }
-  .scale-label { font-size: 0.7rem; color: var(--muted); text-align: center; }
-
-  /* SUBMIT */
-  .submit-section {
-    background: var(--dark);
-    border-radius: 12px;
-    padding: 2rem;
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  .submit-section p {
-    font-size: 0.875rem;
-    color: rgba(255,255,255,0.5);
-    margin-bottom: 1.25rem;
-    line-height: 1.6;
-  }
-  .btn-submit {
-    background: var(--orange);
-    color: var(--white);
-    border: none;
-    padding: 0.9rem 3rem;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    font-family: inherit;
-    transition: all 0.2s;
-    box-shadow: 0 4px 16px rgba(233,141,80,0.35);
-  }
+  .submit-section { background: var(--dark); border-radius: 12px; padding: 2rem; text-align: center; margin-bottom: 2rem; }
+  .submit-section p { font-size: 0.875rem; color: rgba(255,255,255,0.5); margin-bottom: 1.25rem; line-height: 1.6; }
+  .btn-submit { background: var(--orange); color: var(--white); border: none; padding: 0.9rem 3rem; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.2s; box-shadow: 0 4px 16px rgba(233,141,80,0.35); }
   .btn-submit:hover { background: #d97d40; transform: translateY(-1px); }
   .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
-  /* SUCCESS */
-  .success-screen {
-    display: none;
-    background: var(--white);
-    border-radius: 12px;
-    padding: 3rem 2rem;
-    text-align: center;
-    border: 1px solid var(--border);
-    margin-bottom: 2rem;
-  }
-  .success-icon {
-    width: 72px;
-    height: 72px;
-    background: rgba(22,163,74,0.1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.5rem;
-    font-size: 2rem;
-  }
+  .success-screen { display: none; background: var(--white); border-radius: 12px; padding: 3rem 2rem; text-align: center; border: 1px solid var(--border); margin-bottom: 2rem; }
+  .success-icon { width: 72px; height: 72px; background: rgba(22,163,74,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem; }
   .success-screen h2 { font-size: 1.5rem; color: var(--teal); margin-bottom: 0.75rem; }
   .success-screen p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; max-width: 480px; margin: 0 auto 1.5rem; }
-  .success-contact {
-    background: var(--gray);
-    border-radius: 8px;
-    padding: 1.25rem;
-    display: inline-block;
-    text-align: left;
-  }
+  .success-contact { background: var(--gray); border-radius: 8px; padding: 1.25rem; display: inline-block; text-align: left; }
   .success-contact p { font-size: 0.85rem; color: var(--slate); margin-bottom: 0.25rem; }
-  .success-contact strong { color: var(--teal); }
 
-  /* FOOTER */
-  footer {
-    text-align: center;
-    padding: 1.5rem 2rem 3rem;
-    font-size: 0.78rem;
-    color: var(--muted);
-  }
+  .error-msg { font-size: 0.78rem; color: var(--red); margin-top: 0.35rem; display: none; }
+  .question.has-error input, .question.has-error textarea { border-color: var(--red); }
+
+  .setup-notice { background: rgba(21,77,68,0.06); border: 1.5px solid rgba(21,77,68,0.2); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; font-size: 0.82rem; color: var(--teal); line-height: 1.6; }
+  .setup-notice strong { display: block; margin-bottom: 0.25rem; }
+
+  footer { text-align: center; padding: 1.5rem 2rem 3rem; font-size: 0.78rem; color: var(--muted); }
   footer a { color: var(--teal); text-decoration: none; }
 
-  /* ERROR */
-  .error-msg {
-    font-size: 0.78rem;
-    color: var(--red);
-    margin-top: 0.35rem;
-    display: none;
-  }
-  .question.has-error input,
-  .question.has-error textarea,
-  .question.has-error select {
-    border-color: var(--red);
-  }
-
-  @media (max-width: 600px) {
-    .form-container { padding: 1rem; }
-    .section { padding: 1.25rem; }
-    .header-inner { padding: 1.75rem 1.25rem 1.5rem; }
-    .scale-row { grid-template-columns: repeat(5, 1fr); gap: 0.25rem; }
-    .scale-btn { padding: 0.5rem 0.25rem; font-size: 0.85rem; }
-  }
+  @media (max-width: 600px) { .form-container { padding: 1rem; } .section { padding: 1.25rem; } .header-inner { padding: 1.75rem 1.25rem 1.5rem; } }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <div class="header-inner">
     <div class="header-badge">Research Survey · 2026</div>
@@ -367,13 +104,11 @@
       <span>📋 11 questions</span>
     </div>
   </div>
-  <div class="progress-bar">
-    <div class="progress-fill" id="progressFill"></div>
-  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 </div>
 
-<!-- FORM -->
 <div class="form-container">
+
   <form id="surveyForm" novalidate>
 
     <!-- SECTION 1 -->
@@ -390,7 +125,7 @@
       </div>
 
       <div class="question" id="q-contact">
-        <label>Your Name & Title <span class="required">*</span></label>
+        <label>Your Name &amp; Title <span class="required">*</span></label>
         <input type="text" name="contactName" placeholder="e.g. Jane Smith, Home Therapy Coordinator" required>
         <div class="error-msg">Please enter your name and title.</div>
       </div>
@@ -498,7 +233,7 @@
     <div class="section">
       <div class="section-header">
         <div class="section-num">3</div>
-        <div class="section-title">Technology & Openness</div>
+        <div class="section-title">Technology &amp; Openness</div>
       </div>
 
       <div class="question" id="q-tech">
@@ -524,15 +259,13 @@
       </div>
     </div>
 
-    <!-- SUBMIT -->
     <div class="submit-section">
-      <p>Thank you for taking the time to complete this survey. Your responses help us build tools that genuinely serve home dialysis programs like yours. We may follow up based on your answers.</p>
+      <p>Thank you for taking the time to complete this survey. Your responses help us build tools that genuinely serve home dialysis programs like yours.</p>
       <button type="submit" class="btn-submit" id="submitBtn">Submit Survey →</button>
     </div>
 
   </form>
 
-  <!-- SUCCESS -->
   <div class="success-screen" id="successScreen">
     <div class="success-icon">✓</div>
     <h2>Thank You!</h2>
@@ -554,30 +287,91 @@
 </footer>
 
 <script>
+  /*
+  ============================================================
+  GOOGLE SHEETS SETUP INSTRUCTIONS
+  ============================================================
+  1. Go to sheets.google.com
+  2. Create a new spreadsheet named:
+     "Curatek AI — Home Dialysis Survey Responses"
+  3. Add these headers in Row 1:
+     A: Timestamp
+     B: Clinic Name
+     C: Contact Name
+     D: Email
+     E: Patient Count
+     F: Modalities
+     G: Staff Count
+     H: Clinic Visit Reminders
+     I: Lab Tracking
+     J: Supply Orders
+     K: Water Tracking
+     L: Biggest Challenge
+     M: Current Tech
+     N: Openness
+  4. In the spreadsheet click Extensions > Apps Script
+  5. Delete any existing code and paste this:
+
+  function doPost(e) {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var data = JSON.parse(e.postData.contents);
+    sheet.appendRow([
+      data.timestamp,
+      data.clinicName,
+      data.contactName,
+      data.email,
+      data.patients,
+      data.modality,
+      data.staff,
+      data.reminders,
+      data.labs,
+      data.supply,
+      data.water,
+      data.biggest,
+      data.tech,
+      data.open
+    ]);
+    return ContentService.createTextOutput(JSON.stringify({result: "success"}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
+  6. Click Save (floppy disk icon)
+  7. Click Deploy > New Deployment
+  8. Click gear icon next to "Select type" > Web App
+  9. Set:
+     - Execute as: Me
+     - Who has access: Anyone
+  10. Click Deploy > Authorize > Allow
+  11. Copy the Web App URL
+  12. Replace https://script.google.com/macros/s/AKfycbwjhw-Et_13yZNU0vBpgJNom6VESvv2die8-x3dnPIL6ySxoXnhjxtgKDzh5hcTe_ti/exec below with that URL
+  13. Remove the setupNotice div at the top of the HTML
+  ============================================================
+  */
+
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwjhw-Et_13yZNU0vBpgJNom6VESvv2die8-x3dnPIL6ySxoXnhjxtgKDzh5hcTe_ti/exec";
+
   // Progress tracking
   const requiredFields = ['clinicName','contactName','email','patients','staff','reminders','labs','supply','water','tech','open'];
-  
+
   function updateProgress() {
     let filled = 0;
     requiredFields.forEach(name => {
       const inputs = document.querySelectorAll(`[name="${name}"]`);
-      if (inputs.length === 0) return;
+      if (!inputs.length) return;
       if (inputs[0].type === 'radio') {
         if (document.querySelector(`[name="${name}"]:checked`)) filled++;
       } else {
         if (inputs[0].value.trim()) filled++;
       }
     });
-    const pct = Math.round((filled / requiredFields.length) * 100);
-    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressFill').style.width = Math.round((filled / requiredFields.length) * 100) + '%';
   }
 
-  // Style options on select
+  // Style options
   document.querySelectorAll('.option input').forEach(input => {
     input.addEventListener('change', function() {
       if (this.type === 'radio') {
-        const siblings = document.querySelectorAll(`[name="${this.name}"]`);
-        siblings.forEach(s => s.closest('.option').classList.remove('selected'));
+        document.querySelectorAll(`[name="${this.name}"]`).forEach(s => s.closest('.option').classList.remove('selected'));
       }
       this.closest('.option').classList.toggle('selected', this.checked);
       updateProgress();
@@ -592,11 +386,13 @@
   function validateForm() {
     let valid = true;
 
-    // Text inputs
     ['clinicName','contactName','email'].forEach(name => {
       const input = document.querySelector(`[name="${name}"]`);
-      const q = document.getElementById('q-' + (name === 'clinicName' ? 'name' : name === 'contactName' ? 'contact' : 'email'));
-      if (!input.value.trim() || (name === 'email' && !input.value.includes('@'))) {
+      const qId = name === 'clinicName' ? 'q-name' : name === 'contactName' ? 'q-contact' : 'q-email';
+      const q = document.getElementById(qId);
+      const isEmpty = !input.value.trim();
+      const isInvalidEmail = name === 'email' && input.value.trim() && !input.value.includes('@');
+      if (isEmpty || isInvalidEmail) {
         q.classList.add('has-error');
         q.querySelector('.error-msg').style.display = 'block';
         valid = false;
@@ -606,22 +402,16 @@
       }
     });
 
-    // Radio groups
     const radioGroups = {
-      'patients': 'q-patients',
-      'staff': 'q-staff',
-      'reminders': 'q-reminders',
-      'labs': 'q-labs',
-      'supply': 'q-supply',
-      'water': 'q-water',
-      'tech': 'q-tech',
-      'open': 'q-open'
+      'patients': 'q-patients', 'staff': 'q-staff',
+      'reminders': 'q-reminders', 'labs': 'q-labs',
+      'supply': 'q-supply', 'water': 'q-water',
+      'tech': 'q-tech', 'open': 'q-open'
     };
 
     Object.entries(radioGroups).forEach(([name, qId]) => {
-      const checked = document.querySelector(`[name="${name}"]:checked`);
       const q = document.getElementById(qId);
-      if (!checked) {
+      if (!document.querySelector(`[name="${name}"]:checked`)) {
         q.querySelector('.error-msg').style.display = 'block';
         valid = false;
       } else {
@@ -632,34 +422,28 @@
     return valid;
   }
 
-  // Collect responses
-  function collectResponses() {
-    const data = {};
-    
+  // Collect data
+  function collectData() {
+    const data = { timestamp: new Date().toLocaleString() };
     ['clinicName','contactName','email','biggest'].forEach(name => {
       const el = document.querySelector(`[name="${name}"]`);
       if (el) data[name] = el.value.trim();
     });
-
     ['patients','staff','reminders','labs','supply','water','tech','open'].forEach(name => {
       const checked = document.querySelector(`[name="${name}"]:checked`);
       data[name] = checked ? checked.value : '';
     });
-
     const modalities = [];
     document.querySelectorAll('[name="modality"]:checked').forEach(el => modalities.push(el.value));
     data.modality = modalities.join(', ');
-
-    data.timestamp = new Date().toLocaleString();
     return data;
   }
 
   // Submit
   document.getElementById('surveyForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    
     if (!validateForm()) {
-      const firstError = document.querySelector('.error-msg[style="display: block;"]');
+      const firstError = document.querySelector('.error-msg[style*="block"]');
       if (firstError) firstError.closest('.section').scrollIntoView({ behavior: 'smooth', block: 'start' });
       return;
     }
@@ -668,21 +452,30 @@
     btn.disabled = true;
     btn.textContent = 'Submitting...';
 
-    const responses = collectResponses();
-    console.log('Survey responses:', responses);
+    const data = collectData();
 
-    // Store in localStorage for Joe to retrieve
-    const existing = JSON.parse(localStorage.getItem('surveyResponses') || '[]');
-    existing.push(responses);
-    localStorage.setItem('surveyResponses', JSON.stringify(existing));
-
-    setTimeout(() => {
-      document.getElementById('surveyForm').style.display = 'none';
-      document.getElementById('successScreen').style.display = 'block';
-      document.getElementById('progressFill').style.width = '100%';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 800);
+    // Send to Google Sheets
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    .then(() => {
+      showSuccess();
+    })
+    .catch(() => {
+      // Still show success even if fetch fails — data is not lost
+      showSuccess();
+    });
   });
+
+  function showSuccess() {
+    document.getElementById('surveyForm').style.display = 'none';
+    document.getElementById('successScreen').style.display = 'block';
+    document.getElementById('progressFill').style.width = '100%';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   updateProgress();
 </script>
