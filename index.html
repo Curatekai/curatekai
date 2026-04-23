@@ -1,25 +1,26 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="description" content="Curatek AI turns your old leads into new revenue using AI — performance based, zero upfront cost. Plus review automation and AI front desk for local businesses in the DC/Maryland area.">
+<meta name="description" content="Curatek AI helps independent HVAC, plumbing, roofing, and auto repair companies in DC, Maryland, and Virginia capture every missed call, get more Google reviews, and answer every call 24/7 with AI.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Curatek AI — Turn Dead Leads Into Live Revenue</title>
+<title>Curatek AI — Never Lose Another Job to a Missed Call</title>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --teal:#154D44;--teal-light:#1a6358;--teal-dim:#0d3530;--slate:#47525C;
-    --orange:#E98D50;--gold:#F5D298;--bg-light:#F0F2F4;--bg-dark:#0F1720;
-    --white:#ffffff;--text-dark:#1a1f2e;--text-muted:#6b7280;
-    --radius:14px;--radius-sm:8px;--red:#DC2626;--green:#16a34a;
+    --teal:#154D44;--teal-light:#1a6358;--teal-dim:#0d3530;
+    --slate:#47525C;--orange:#E98D50;--gold:#F5D298;
+    --bg-light:#F0F2F4;--bg-dark:#0F1720;--white:#ffffff;
+    --text-dark:#1a1f2e;--text-muted:#6b7280;
+    --radius:14px;--radius-sm:8px;--green:#16a34a;--red:#DC2626;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{font-family:"Sora",system-ui,sans-serif;background:var(--white);color:var(--text-dark);line-height:1.6;overflow-x:hidden}
+
   header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(21,77,68,0.1);padding:0 2rem}
   .header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px}
-  nav{display:flex;gap:1.75rem;align-items:center}
+  nav{display:flex;gap:1.5rem;align-items:center}
   nav a{font-size:.875rem;font-weight:500;color:var(--slate);text-decoration:none;transition:color .2s}
   nav a:hover{color:var(--teal)}
   .btn{display:inline-block;padding:.6rem 1.4rem;border-radius:var(--radius-sm);font-weight:600;font-size:.875rem;text-decoration:none;cursor:pointer;border:none;transition:all .2s;font-family:inherit}
@@ -31,12 +32,14 @@
   .btn-ghost{background:rgba(255,255,255,.1);color:var(--white);border:1.5px solid rgba(255,255,255,.3)}
   .btn-ghost:hover{background:rgba(255,255,255,.2)}
 
+  /* HERO */
   .hero{background:var(--bg-dark);padding:7rem 2rem 0;position:relative;overflow:hidden}
   .hero::before{content:"";position:absolute;top:-150px;right:-150px;width:600px;height:600px;background:radial-gradient(circle,rgba(21,77,68,.4) 0%,transparent 70%);pointer-events:none}
+  .hero::after{content:"";position:absolute;bottom:0;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(233,141,80,.05) 0%,transparent 70%);pointer-events:none}
   .hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
   .hero-top{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;padding-bottom:5rem}
   .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(245,210,152,.1);border:1px solid rgba(245,210,152,.22);color:var(--gold);padding:.4rem 1.1rem;border-radius:100px;font-size:.78rem;font-weight:600;margin-bottom:1.5rem;letter-spacing:.05em;text-transform:uppercase}
-  .hero h1{font-size:clamp(2.2rem,4vw,3.4rem);font-weight:800;color:var(--white);line-height:1.1;letter-spacing:-.035em;margin-bottom:1.25rem}
+  .hero h1{font-size:clamp(2.2rem,4vw,3.6rem);font-weight:800;color:var(--white);line-height:1.08;letter-spacing:-.035em;margin-bottom:1.25rem}
   .hero h1 em{font-style:normal;color:var(--gold)}
   .hero h1 span{color:var(--orange)}
   .hero-sub{font-size:1.05rem;color:rgba(255,255,255,.62);line-height:1.78;margin-bottom:2rem;max-width:520px}
@@ -45,31 +48,63 @@
   .trust-pill{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5);padding:.3rem .85rem;border-radius:100px;font-size:.75rem;font-weight:500}
   .trust-pill.g{background:rgba(22,163,74,.1);border-color:rgba(22,163,74,.25);color:#4ade80}
 
-  .hero-offers{display:flex;flex-direction:column;gap:1rem}
-  .offer-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:1.5rem;transition:border-color .2s,transform .2s}
-  .offer-card:hover{border-color:rgba(233,141,80,.3);transform:translateX(4px)}
-  .offer-card.featured{background:rgba(21,77,68,.25);border-color:rgba(21,77,68,.5)}
-  .offer-num{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--orange);margin-bottom:.4rem}
-  .offer-title{font-size:1rem;font-weight:700;color:var(--white);margin-bottom:.3rem}
-  .offer-desc{font-size:.82rem;color:rgba(255,255,255,.48);line-height:1.55}
-  .offer-tag{display:inline-block;margin-top:.65rem;background:rgba(245,210,152,.1);color:var(--gold);padding:.18rem .65rem;border-radius:100px;font-size:.72rem;font-weight:600}
-  .offer-tag.g{background:rgba(22,163,74,.12);color:#4ade80}
+  /* HERO RIGHT — SCENARIO */
+  .hero-scenario{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:1.75rem}
+  .scenario-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--orange);margin-bottom:1.25rem}
+  .scenario-item{display:flex;gap:.85rem;padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.06);align-items:flex-start}
+  .scenario-item:last-child{border-bottom:none}
+  .scenario-icon{font-size:1.5rem;flex-shrink:0;width:36px;text-align:center}
+  .scenario-item h4{font-size:.875rem;font-weight:700;color:var(--white);margin-bottom:.2rem}
+  .scenario-item p{font-size:.8rem;color:rgba(255,255,255,.45);line-height:1.5}
+  .scenario-cost{font-size:.75rem;color:#f87171;font-weight:700;margin-top:.3rem}
+  .scenario-fix{font-size:.75rem;color:#4ade80;font-weight:700;margin-top:.3rem}
 
+  /* STATS */
   .hero-stats{border-top:1px solid rgba(255,255,255,.07);display:grid;grid-template-columns:repeat(4,1fr)}
-  .hero-stat{padding:2rem 1.5rem;border-right:1px solid rgba(255,255,255,.07)}
+  .hero-stat{padding:1.75rem 1.5rem;border-right:1px solid rgba(255,255,255,.07)}
   .hero-stat:last-child{border-right:none}
   .hero-stat-num{font-size:2rem;font-weight:800;color:var(--orange);line-height:1}
-  .hero-stat-label{font-size:.78rem;color:rgba(255,255,255,.4);margin-top:.3rem;line-height:1.4}
+  .hero-stat-label{font-size:.75rem;color:rgba(255,255,255,.4);margin-top:.3rem;line-height:1.4}
 
+  /* SECTIONS */
   section{padding:5rem 2rem}
   .section-inner{max-width:1100px;margin:0 auto}
   .section-label{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:.65rem}
   .section-title{font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:800;color:var(--teal);letter-spacing:-.03em;line-height:1.15;margin-bottom:1rem}
-  .section-sub{font-size:1rem;color:var(--text-muted);max-width:580px;line-height:1.78}
+  .section-sub{font-size:1rem;color:var(--text-muted);max-width:600px;line-height:1.78}
 
+  /* WHO WE SERVE */
+  .who{background:var(--bg-light)}
+  .who-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem}
+  .who-card{background:var(--white);border-radius:var(--radius);padding:1.75rem;border-top:4px solid var(--orange);box-shadow:0 2px 16px rgba(0,0,0,.06);transition:all .2s}
+  .who-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.1)}
+  .who-icon{font-size:2.25rem;margin-bottom:.85rem}
+  .who-card h3{font-size:1rem;font-weight:800;color:var(--teal);margin-bottom:.75rem}
+  .pain-list{list-style:none;display:flex;flex-direction:column;gap:.45rem}
+  .pain-list li{font-size:.8rem;color:var(--slate);display:flex;gap:.5rem;align-items:flex-start;line-height:1.45}
+  .pain-list li::before{content:"→";color:var(--orange);font-weight:700;flex-shrink:0}
+  .who-stat{margin-top:1.1rem;padding:.65rem .9rem;background:rgba(220,38,38,.06);border-radius:var(--radius-sm);border-left:3px solid var(--red)}
+  .who-stat p{font-size:.78rem;color:var(--red);font-weight:600;line-height:1.5}
+
+  /* THREE SERVICES */
+  .services{background:var(--white)}
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+  .svc-card{border-radius:var(--radius);padding:2rem;border:2px solid var(--bg-light);transition:all .2s;position:relative}
+  .svc-card:hover{border-color:var(--teal);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.08)}
+  .svc-card.featured{border-color:var(--teal);box-shadow:0 8px 40px rgba(21,77,68,.1)}
+  .svc-num{position:absolute;top:1.25rem;right:1.25rem;width:28px;height:28px;background:var(--teal);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800}
+  .svc-icon{font-size:2.25rem;margin-bottom:1rem}
+  .svc-card h3{font-size:1.1rem;font-weight:800;color:var(--teal);margin-bottom:.5rem}
+  .svc-hook{font-size:.82rem;font-weight:700;color:var(--orange);margin-bottom:1rem;font-style:italic}
+  .svc-card p{font-size:.875rem;color:var(--text-muted);line-height:1.72;margin-bottom:1.25rem}
+  .svc-features{list-style:none;display:flex;flex-direction:column;gap:.45rem}
+  .svc-features li{font-size:.82rem;color:var(--slate);display:flex;gap:.5rem;align-items:flex-start;line-height:1.4}
+  .svc-features li::before{content:"✓";color:var(--teal);font-weight:800;flex-shrink:0}
+
+  /* HOW IT WORKS */
   .how{background:var(--bg-light)}
-  .how-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:3rem}
-  .how-steps{display:flex;flex-direction:column;gap:0}
+  .how-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3rem}
+  .how-steps{display:flex;flex-direction:column}
   .how-step{display:flex;gap:1.25rem;padding:1.25rem 0;border-bottom:1px solid rgba(21,77,68,.08)}
   .how-step:last-child{border-bottom:none}
   .how-num{width:36px;height:36px;background:var(--teal);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;flex-shrink:0;margin-top:2px}
@@ -77,122 +112,140 @@
   .how-num.g{background:var(--green)}
   .how-body h4{font-size:.925rem;font-weight:700;color:var(--teal);margin-bottom:.25rem}
   .how-body p{font-size:.865rem;color:var(--text-muted);line-height:1.6}
-  .sms-demo{background:var(--bg-dark);border-radius:var(--radius);padding:2rem}
-  .sms-demo-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--orange);margin-bottom:1.25rem}
-  .sms-msg{margin-bottom:.85rem}
-  .sms-msg-label{font-size:.7rem;color:rgba(255,255,255,.35);margin-bottom:.3rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
-  .sms-bubble{padding:.85rem 1.1rem;border-radius:12px;font-size:.875rem;line-height:1.6;max-width:85%}
-  .sms-bubble.sent{background:rgba(21,77,68,.5);color:rgba(255,255,255,.88);margin-left:auto;border-radius:12px 12px 2px 12px}
-  .sms-bubble.received{background:rgba(255,255,255,.08);color:rgba(255,255,255,.75);border-radius:12px 12px 12px 2px}
-  .sms-bubble.ai{background:rgba(233,141,80,.15);border:1px solid rgba(233,141,80,.25);color:rgba(255,255,255,.88)}
-  .sms-result{margin-top:1.25rem;padding:.85rem 1.1rem;background:rgba(22,163,74,.1);border:1px solid rgba(22,163,74,.2);border-radius:var(--radius-sm);font-size:.82rem;color:#4ade80;font-weight:600}
+  .phone-flow{background:var(--bg-dark);border-radius:var(--radius);padding:2rem}
+  .flow-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--orange);margin-bottom:1.5rem}
+  .flow-step{display:flex;gap:1rem;margin-bottom:1rem;align-items:flex-start}
+  .flow-step:last-child{margin-bottom:0}
+  .flow-dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+  .flow-dot.red{background:rgba(220,38,38,.15);border:1px solid rgba(220,38,38,.3)}
+  .flow-dot.green{background:rgba(22,163,74,.15);border:1px solid rgba(22,163,74,.3)}
+  .flow-dot.orange{background:rgba(233,141,80,.15);border:1px solid rgba(233,141,80,.3)}
+  .flow-text h4{font-size:.85rem;font-weight:700;margin-bottom:.2rem}
+  .flow-text.red h4{color:#f87171}
+  .flow-text.green h4{color:#4ade80}
+  .flow-text.orange h4{color:var(--gold)}
+  .flow-text p{font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.5}
+  .flow-divider{width:2px;height:20px;background:rgba(255,255,255,.08);margin-left:15px;margin-bottom:0}
 
-  .tiers{background:var(--white)}
-  .tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
-  .tier-card{border-radius:var(--radius);padding:2rem;border:2px solid transparent;transition:all .2s}
-  .tier-card.gold{background:linear-gradient(135deg,#fef9ec,#fef3d0);border-color:#f59e0b}
-  .tier-card.silver{background:linear-gradient(135deg,#f8fafc,#f1f5f9);border-color:#94a3b8}
-  .tier-card.bronze{background:linear-gradient(135deg,#fff7f5,#fef0eb);border-color:#d97706}
-  .tier-icon{font-size:2.5rem;margin-bottom:1rem}
-  .tier-card h3{font-size:1.2rem;font-weight:800;margin-bottom:.4rem}
-  .tier-card.gold h3{color:#92400e}
-  .tier-card.silver h3{color:var(--slate)}
-  .tier-card.bronze h3{color:#78350f}
-  .tier-card p{font-size:.875rem;color:var(--text-muted);line-height:1.65;margin-bottom:1rem}
-  .tier-action{font-size:.82rem;font-weight:700;padding:.5rem 1rem;border-radius:var(--radius-sm);display:inline-block}
-  .tier-card.gold .tier-action{background:#f59e0b;color:var(--white)}
-  .tier-card.silver .tier-action{background:#94a3b8;color:var(--white)}
-  .tier-card.bronze .tier-action{background:rgba(0,0,0,.08);color:var(--text-muted)}
+  /* THE MATH */
+  .math{background:var(--white)}
+  .math-tabs{display:flex;gap:.5rem;margin-top:2.5rem;flex-wrap:wrap}
+  .math-tab{padding:.55rem 1.25rem;border-radius:100px;border:1.5px solid var(--bg-light);font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s;color:var(--text-muted);background:var(--bg-light);font-family:inherit}
+  .math-tab.active{background:var(--teal);color:var(--white);border-color:var(--teal)}
+  .math-content{display:none;margin-top:2rem}
+  .math-content.active{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+  .math-rows{display:flex;flex-direction:column;gap:.75rem}
+  .math-row{display:flex;justify-content:space-between;align-items:center;padding:.85rem 1.25rem;border-radius:var(--radius-sm)}
+  .math-row.neutral{background:var(--bg-light)}
+  .math-row.bad{background:rgba(220,38,38,.06);border-left:3px solid var(--red)}
+  .math-row.good{background:rgba(22,163,74,.08);border-left:3px solid var(--green)}
+  .math-row.highlight{background:rgba(21,77,68,.08);border-left:3px solid var(--teal)}
+  .math-label{font-size:.875rem;color:var(--slate)}
+  .math-label.strong{font-weight:700;color:var(--text-dark)}
+  .math-val{font-size:.9rem;font-weight:800}
+  .math-row.bad .math-val{color:var(--red)}
+  .math-row.good .math-val{color:var(--green)}
+  .math-row.highlight .math-val{color:var(--teal)}
+  .math-visual{background:var(--bg-dark);border-radius:var(--radius);padding:2.5rem;text-align:center}
+  .math-big{font-size:4.5rem;font-weight:800;color:var(--orange);line-height:1}
+  .math-big-sub{font-size:.9rem;color:rgba(255,255,255,.5);margin-top:.4rem}
+  .math-note{margin-top:1.5rem;padding:1rem 1.25rem;background:rgba(255,255,255,.04);border-radius:var(--radius-sm);font-size:.82rem;color:rgba(255,255,255,.45);line-height:1.65;text-align:left}
 
-  .reviews-section{background:var(--bg-light)}
-  .reviews-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-top:3rem}
-  .reviews-flow{display:flex;flex-direction:column;gap:0}
-  .review-step{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid rgba(21,77,68,.08);align-items:flex-start}
-  .review-step:last-child{border-bottom:none}
-  .review-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:6px}
-  .review-dot.t{background:var(--teal)}
-  .review-dot.o{background:var(--orange)}
-  .review-dot.g{background:var(--green)}
-  .review-step p{font-size:.875rem;color:var(--slate);line-height:1.55}
-  .review-step strong{color:var(--text-dark)}
-  .reviews-stats{display:flex;flex-direction:column;gap:1.25rem}
-  .review-stat{background:var(--white);border-radius:var(--radius);padding:1.75rem;box-shadow:0 2px 12px rgba(0,0,0,.05);border-left:4px solid var(--teal)}
-  .review-stat-num{font-size:2.5rem;font-weight:800;color:var(--teal);line-height:1}
-  .review-stat-label{font-size:.82rem;color:var(--text-muted);margin-top:.35rem;line-height:1.4}
-  .star-row{display:flex;gap:.2rem;margin-top:.5rem;font-size:1.1rem}
+  /* REVIEWS */
+  .reviews{background:var(--bg-light)}
+  .reviews-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:3rem}
+  .review-flow{display:flex;flex-direction:column;gap:0}
+  .rf-step{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid rgba(21,77,68,.08);align-items:flex-start}
+  .rf-step:last-child{border-bottom:none}
+  .rf-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:6px}
+  .rf-dot.t{background:var(--teal)}
+  .rf-dot.o{background:var(--orange)}
+  .rf-dot.g{background:var(--green)}
+  .rf-step p{font-size:.875rem;color:var(--slate);line-height:1.58}
+  .rf-step strong{color:var(--text-dark)}
+  .review-stats{display:flex;flex-direction:column;gap:1.25rem}
+  .rev-stat{background:var(--white);border-radius:var(--radius);padding:1.75rem;box-shadow:0 2px 12px rgba(0,0,0,.05);border-left:4px solid var(--teal)}
+  .rev-stat-num{font-size:2.5rem;font-weight:800;color:var(--teal);line-height:1}
+  .rev-stat-label{font-size:.82rem;color:var(--text-muted);margin-top:.35rem;line-height:1.4}
+  .stars{display:flex;gap:.2rem;margin-top:.35rem;font-size:1rem}
 
-  .frontdesk{background:var(--bg-dark)}
-  .frontdesk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3rem}
-  .fd-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:1.75rem;transition:all .2s}
-  .fd-card:hover{border-color:rgba(233,141,80,.3);transform:translateY(-3px)}
-  .fd-icon{font-size:2rem;margin-bottom:1rem}
-  .fd-card h4{font-size:.95rem;font-weight:700;color:var(--white);margin-bottom:.4rem}
-  .fd-card p{font-size:.82rem;color:rgba(255,255,255,.45);line-height:1.6}
-  .fd-demo-box{margin-top:3rem;background:rgba(21,77,68,.2);border:1px solid rgba(21,77,68,.4);border-radius:var(--radius);padding:2rem;text-align:center}
-  .fd-demo-box h3{font-size:1.25rem;font-weight:700;color:var(--white);margin-bottom:.75rem}
-  .fd-demo-box p{font-size:.9rem;color:rgba(255,255,255,.55);margin-bottom:1.5rem;line-height:1.65;max-width:480px;margin-left:auto;margin-right:auto}
-  .phone-number{font-size:1.75rem;font-weight:800;color:var(--gold);letter-spacing:.02em;display:block;margin-bottom:.5rem}
+  /* MAP GAP */
+  .mapgap{background:var(--bg-dark)}
+  .mapgap .section-title{color:var(--white)}
+  .mapgap .section-sub{color:rgba(255,255,255,.55)}
+  .mapgap-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3rem}
+  .gap-list{display:flex;flex-direction:column;gap:1rem}
+  .gap-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-left:3px solid var(--orange);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:1.1rem 1.25rem}
+  .gap-item h4{font-size:.875rem;font-weight:700;color:var(--white);margin-bottom:.25rem}
+  .gap-item p{font-size:.8rem;color:rgba(255,255,255,.45);line-height:1.55}
+  .gap-pitch{font-size:.78rem;color:var(--gold);font-weight:600;margin-top:.4rem;font-style:italic}
+  .audit-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:2rem}
+  .audit-title{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--orange);margin-bottom:1.25rem}
+  .audit-row{display:flex;justify-content:space-between;align-items:center;padding:.65rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
+  .audit-row:last-child{border-bottom:none}
+  .audit-row-label{font-size:.82rem;color:rgba(255,255,255,.6)}
+  .badge{font-size:.72rem;font-weight:700;padding:.2rem .65rem;border-radius:100px}
+  .badge.bad{background:rgba(220,38,38,.15);color:#f87171}
+  .badge.good{background:rgba(22,163,74,.15);color:#4ade80}
+  .audit-score{margin-top:1.25rem;padding:1rem 1.25rem;background:rgba(233,141,80,.1);border:1px solid rgba(233,141,80,.2);border-radius:var(--radius-sm);text-align:center}
+  .audit-score p{font-size:.875rem;color:var(--gold);font-weight:600;line-height:1.6}
 
-  .pricing{background:var(--bg-light)}
-  .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
-  .price-card{background:var(--white);border-radius:var(--radius);padding:2.25rem;border:2px solid transparent;transition:all .2s;display:flex;flex-direction:column;box-shadow:0 2px 16px rgba(0,0,0,.05)}
-  .price-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.1)}
-  .price-card.featured{border-color:var(--teal);box-shadow:0 8px 40px rgba(21,77,68,.15);transform:translateY(-6px)}
-  .price-badge{display:inline-block;background:var(--orange);color:var(--white);font-size:.68rem;font-weight:700;padding:.2rem .85rem;border-radius:100px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.75rem;align-self:flex-start}
-  .price-tier{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--orange);margin-bottom:.35rem}
-  .price-name{font-size:1.4rem;font-weight:800;color:var(--teal);margin-bottom:.25rem}
-  .price-tagline{font-size:.82rem;color:var(--text-muted);margin-bottom:1.25rem;line-height:1.45}
-  .price-amount{font-size:2rem;font-weight:800;color:var(--teal);line-height:1}
-  .price-amount span{font-size:.9rem;font-weight:500;color:var(--text-muted)}
-  .price-note{font-size:.75rem;color:var(--orange);font-weight:600;margin-top:.3rem;margin-bottom:1.5rem}
-  .price-features{list-style:none;flex:1;margin-bottom:1.75rem}
-  .price-features li{font-size:.865rem;color:var(--slate);padding:.45rem 0;display:flex;align-items:flex-start;gap:.6rem;border-bottom:1px solid rgba(0,0,0,.04);line-height:1.4}
-  .price-features li:last-child{border-bottom:none}
-  .price-features li::before{content:"✓";color:var(--teal);font-weight:700;flex-shrink:0;margin-top:1px}
-  .price-cta{display:block;text-align:center;margin-top:auto}
+  /* DEMO */
+  .demo{background:var(--bg-light)}
+  .demo-box{margin-top:3rem;background:var(--bg-dark);border-radius:var(--radius);padding:3rem;text-align:center}
+  .demo-box h3{font-size:1.5rem;font-weight:800;color:var(--white);margin-bottom:.75rem}
+  .demo-box p{font-size:.95rem;color:rgba(255,255,255,.55);max-width:500px;margin:0 auto 1.75rem;line-height:1.75}
+  .phone-big{font-size:2.5rem;font-weight:800;color:var(--gold);display:block;margin-bottom:.4rem;letter-spacing:.02em}
+  .phone-sub{font-size:.8rem;color:rgba(255,255,255,.3);margin-bottom:2rem}
 
-  .who{background:var(--white)}
-  .who-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;margin-top:3rem}
-  .who-card{background:var(--bg-light);border-radius:var(--radius);padding:1.5rem;text-align:center;border-bottom:3px solid var(--orange);transition:transform .2s}
-  .who-card:hover{transform:translateY(-3px)}
-  .who-icon{font-size:2rem;margin-bottom:.75rem}
-  .who-card h4{font-size:.9rem;font-weight:700;color:var(--teal);margin-bottom:.3rem}
-  .who-card p{font-size:.8rem;color:var(--text-muted);line-height:1.5}
+  /* AREA */
+  .area{background:var(--white)}
+  .area-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+  .area-card{background:var(--bg-light);border-radius:var(--radius);padding:1.75rem;text-align:center;border-bottom:3px solid var(--teal);transition:transform .2s}
+  .area-card:hover{transform:translateY(-3px)}
+  .area-flag{font-size:2.25rem;margin-bottom:.75rem}
+  .area-card h4{font-size:1rem;font-weight:800;color:var(--teal);margin-bottom:.5rem}
+  .area-card p{font-size:.8rem;color:var(--text-muted);line-height:1.65}
 
-  .about{background:var(--bg-dark)}
+  /* ABOUT */
+  .about{background:var(--bg-light)}
   .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:3rem}
   .about-quote::before{content:'"';font-size:5rem;color:var(--orange);line-height:.6;display:block;margin-bottom:1rem;font-family:Georgia,serif;opacity:.7}
-  .about-quote p{font-size:1.15rem;color:var(--white);line-height:1.75;font-style:italic}
-  .about-quote cite{display:block;margin-top:1.25rem;font-size:.82rem;color:var(--gold);font-style:normal;font-weight:600}
+  .about-quote p{font-size:1.1rem;color:var(--text-dark);line-height:1.78;font-style:italic}
+  .about-quote cite{display:block;margin-top:1.25rem;font-size:.82rem;color:var(--teal);font-style:normal;font-weight:700}
   .about-creds{display:flex;flex-direction:column;gap:.85rem}
-  .about-cred{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-left:3px solid var(--orange);border-radius:var(--radius-sm);padding:1rem 1.25rem}
-  .about-cred h4{font-size:.875rem;font-weight:700;color:var(--white);margin-bottom:.2rem}
-  .about-cred p{font-size:.8rem;color:rgba(255,255,255,.45);line-height:1.5}
+  .about-cred{background:var(--white);border-left:3px solid var(--orange);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:1rem 1.25rem;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+  .about-cred h4{font-size:.875rem;font-weight:700;color:var(--teal);margin-bottom:.2rem}
+  .about-cred p{font-size:.8rem;color:var(--text-muted);line-height:1.5}
 
-  .faq{background:var(--bg-light)}
+  /* FAQ */
+  .faq{background:var(--white)}
   .faq-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(440px,1fr));gap:1rem;margin-top:3rem}
-  details{background:var(--white);border-radius:var(--radius-sm);padding:1.25rem 1.5rem;cursor:pointer}
-  details[open]{background:rgba(21,77,68,.04)}
+  details{background:var(--bg-light);border-radius:var(--radius-sm);padding:1.25rem 1.5rem;cursor:pointer}
+  details[open]{background:rgba(21,77,68,.05)}
   summary{font-size:.9rem;font-weight:600;color:var(--teal);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;user-select:none}
   summary::after{content:"+";font-size:1.2rem;color:var(--orange);flex-shrink:0}
   details[open] summary::after{content:"−"}
   details p{font-size:.875rem;color:var(--text-muted);line-height:1.72;margin-top:.75rem}
 
+  /* FINAL CTA */
   .final-cta{background:linear-gradient(135deg,var(--teal) 0%,var(--teal-dim) 100%);padding:6rem 2rem;text-align:center;position:relative;overflow:hidden}
   .final-cta::before{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(255,255,255,.04) 0%,transparent 70%);pointer-events:none}
   .final-cta h2{font-size:clamp(2rem,4vw,3rem);font-weight:800;color:var(--white);letter-spacing:-.03em;margin-bottom:.75rem;position:relative}
   .final-cta h2 span{color:var(--gold)}
   .final-cta p{font-size:1.05rem;color:rgba(255,255,255,.65);margin-bottom:2.5rem;position:relative;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.75}
-  .final-cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative}
+  .final-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative}
 
   footer{background:var(--bg-dark);border-top:1px solid rgba(255,255,255,.05)}
   .footer-inner{max-width:1100px;margin:0 auto;padding:3rem 2rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem}
-  footer a{color:rgba(255,255,255,.4);text-decoration:none}
   .footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding:1.5rem 2rem;text-align:center}
+  footer a{color:rgba(255,255,255,.4);text-decoration:none}
+  footer a:hover{color:rgba(255,255,255,.7)}
 
   @media(max-width:900px){
-    .hero-top,.how-grid,.reviews-grid,.about-grid{grid-template-columns:1fr;gap:2rem}
-    .hero-stats,.tier-grid,.frontdesk-grid,.pricing-grid{grid-template-columns:1fr}
+    .hero-top,.how-grid,.reviews-grid,.mapgap-grid,.about-grid{grid-template-columns:1fr;gap:2rem}
+    .hero-stats,.who-grid,.services-grid,.area-grid{grid-template-columns:1fr}
+    .math-content.active{grid-template-columns:1fr}
     .nav-links{display:none}
     .footer-inner{grid-template-columns:1fr}
     .faq-grid{grid-template-columns:1fr}
@@ -206,271 +259,523 @@
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
   <div class="header-inner">
     <a href="/"><img src="curatek-logo.png" alt="Curatek AI" style="height:48px;width:auto;"></a>
     <nav class="nav-links">
+      <a href="#who">Industries</a>
+      <a href="#services">Services</a>
       <a href="#how">How It Works</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#frontdesk">AI Front Desk</a>
-      <a href="#pricing">Our Services</a>
-      <a href="/dialysis.html">Home Dialysis</a>
+      <a href="#math">The Math</a>
+      <a href="#demo">Live Demo</a>
       <a href="#faq">FAQ</a>
       <a href="https://api.curatekai.com/widget/booking/EvrEIsnE6i1bLxEAAGJU" class="btn btn-primary">Book a Free Strategy Call</a>
     </nav>
   </div>
 </header>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-top">
       <div>
-        <div class="hero-badge">🤖 AI-Powered Revenue Recovery</div>
-        <h1>Your Old Leads Are <em>Worth More</em> Than You Think.<br>We Turn Them Into <span>Revenue.</span></h1>
-        <p class="hero-sub">Every business has a graveyard of old leads — people who called, inquired, or almost bought and then disappeared. We wake them up using AI and turn them into paying customers. You only pay us when you make money.</p>
+        <div class="hero-badge">🛠️ HVAC · Plumbing · Roofing · Auto Repair — DC · MD · VA</div>
+        <h1>Every Missed Call Is a <em>Lost Job.</em> We Make Sure You <span>Never Miss Another One.</span></h1>
+        <p class="hero-sub">When your tech is on a job and the phone rings — that call is going to your competitor. Curatek AI captures every missed call automatically, texts the customer back within seconds, and books the job into your calendar. 24 hours a day. 7 days a week.</p>
         <div class="hero-ctas">
           <a href="https://api.curatekai.com/widget/booking/EvrEIsnE6i1bLxEAAGJU" class="btn btn-primary btn-lg">Book a Free Strategy Call</a>
-          <a href="https://app.curatekai.com/demo" class="btn btn-ghost btn-lg">See Live Demo</a>
+          <a href="tel:+12138450827" class="btn btn-ghost btn-lg">📞 Hear the AI Live</a>
         </div>
         <div class="trust-pills">
-          <span class="trust-pill g">✓ Performance based — zero upfront cost</span>
-          <span class="trust-pill">No contract</span>
-          <span class="trust-pill">30-day guarantee</span>
-          <span class="trust-pill">Live in 24 hours</span>
+          <span class="trust-pill g">✓ No contract</span>
+          <span class="trust-pill g">✓ 30-day guarantee</span>
+          <span class="trust-pill">Live in 48 hours</span>
+          <span class="trust-pill">Consultation pricing</span>
+          <span class="trust-pill">DC · MD · VA</span>
         </div>
       </div>
-      <div class="hero-offers">
-        <div class="offer-card featured">
-          <div class="offer-num">Step 1 — Entry Offer</div>
-          <div class="offer-title">🔄 Database Reactivation</div>
-          <div class="offer-desc">We send your old dead leads a conversational AI message that wakes them up and books appointments automatically. You pay nothing until we make you money.</div>
-          <span class="offer-tag g">✓ Performance based — zero risk</span>
+      <div class="hero-scenario">
+        <div class="scenario-label">What Happens When Your Phone Rings Right Now</div>
+        <div class="scenario-item">
+          <div class="scenario-icon">📞</div>
+          <div>
+            <h4>Customer calls about emergency AC repair</h4>
+            <p>It's 7pm. Your tech just finished a job. Nobody's at the desk to answer.</p>
+            <div class="scenario-cost">Without Curatek: Goes to voicemail. Customer hangs up. Calls your competitor. $4,000 job gone.</div>
+          </div>
         </div>
-        <div class="offer-card">
-          <div class="offer-num">Step 2 — First Upsell</div>
-          <div class="offer-title">⭐ Google Review Automation</div>
-          <div class="offer-desc">Every happy customer automatically gets a review request at the perfect moment. Watch your Google rating climb every month on autopilot.</div>
-          <span class="offer-tag">From $197/month</span>
+        <div class="scenario-item">
+          <div class="scenario-icon">🤖</div>
+          <div>
+            <h4>With Curatek AI — here's what happens instead</h4>
+            <p>AI answers instantly. Captures name and number. Texts customer back within seconds.</p>
+            <div class="scenario-fix">Customer feels responded to. Job gets booked. You find out in the morning. $4,000 saved.</div>
+          </div>
         </div>
-        <div class="offer-card">
-          <div class="offer-num">Step 3 — Full System</div>
-          <div class="offer-title">🤖 AI Front Desk 24/7</div>
-          <div class="offer-desc">AI voice receptionist, chat widget, and SMS automation. Never miss another new lead — day or night, weekends, holidays.</div>
-          <span class="offer-tag">From $397/month</span>
+        <div class="scenario-item">
+          <div class="scenario-icon">⭐</div>
+          <div>
+            <h4>Job is done — review request sent automatically</h4>
+            <p>2 hours after the job — customer gets a text with a direct link to leave a Google review.</p>
+            <div class="scenario-fix">No asking. No remembering. Your rating climbs every month on autopilot.</div>
+          </div>
         </div>
       </div>
     </div>
     <div class="hero-stats">
-      <div class="hero-stat"><div class="hero-stat-num">20–40%</div><div class="hero-stat-label">Of dead leads respond<br>to our first message</div></div>
-      <div class="hero-stat"><div class="hero-stat-num">24hrs</div><div class="hero-stat-label">Time to go live<br>no IT setup required</div></div>
-      <div class="hero-stat"><div class="hero-stat-num">$0</div><div class="hero-stat-label">Upfront cost for<br>database reactivation</div></div>
-      <div class="hero-stat"><div class="hero-stat-num">10yrs</div><div class="hero-stat-label">Healthcare & operations<br>background — DaVita + FMC</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">62%</div><div class="hero-stat-label">Of calls to small businesses<br>go unanswered every day</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">27 sec</div><div class="hero-stat-label">How long before a customer<br>calls the next business</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">90%</div><div class="hero-stat-label">Of customers check Google<br>reviews before calling</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">48hrs</div><div class="hero-stat-label">Time to go live —<br>no IT setup required</div></div>
     </div>
   </div>
 </section>
 
+<!-- WHO WE SERVE -->
+<section class="who" id="who">
+  <div class="section-inner">
+    <div class="section-label">Who We Serve</div>
+    <h2 class="section-title">Built for Independent Home Service Companies</h2>
+    <p class="section-sub">We only work with independently owned and operated businesses in DC, Maryland, and Virginia. No franchises. No corporate chains. Just owners who make decisions fast and want results the same week.</p>
+    <div class="who-grid">
+      <div class="who-card">
+        <div class="who-icon">❄️</div>
+        <h3>HVAC &amp; Heating</h3>
+        <ul class="pain-list">
+          <li>Emergency AC calls going to voicemail during summer peak</li>
+          <li>Techs on jobs — nobody answering the office phone</li>
+          <li>After-hours calls worth $3K-8K going to competitors</li>
+          <li>Competitor has 200 reviews — you have 23</li>
+        </ul>
+        <div class="who-stat"><p>Average job: $3,000–8,000<br>One missed call = one lost job</p></div>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">🔧</div>
+        <h3>Plumbing</h3>
+        <ul class="pain-list">
+          <li>Burst pipe at 2am — whoever answers first wins</li>
+          <li>Solo operators with no one to answer while working</li>
+          <li>Emergency calls during peak hours going unanswered</li>
+          <li>No system to follow up after completed jobs</li>
+        </ul>
+        <div class="who-stat"><p>Average job: $500–2,000<br>Missing 3 calls/week = $6K+/month lost</p></div>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">🏠</div>
+        <h3>Roofing</h3>
+        <ul class="pain-list">
+          <li>Storm season calls coming in faster than you can answer</li>
+          <li>Homeowners researching reviews before they ever call</li>
+          <li>Crew on a job — phone rings at the office — nobody there</li>
+          <li>No automated follow-up after estimates given</li>
+        </ul>
+        <div class="who-stat"><p>Average job: $8,000–15,000<br>One missed storm call = $10K+ gone</p></div>
+      </div>
+      <div class="who-card">
+        <div class="who-icon">🚗</div>
+        <h3>Auto Repair</h3>
+        <ul class="pain-list">
+          <li>Owner and techs under cars — phones go unanswered all day</li>
+          <li>Low Google reviews despite doing quality work</li>
+          <li>Customers choosing competitors based on review count alone</li>
+          <li>No reminder system to bring past customers back</li>
+        </ul>
+        <div class="who-stat"><p>Average job: $400–800<br>5 missed calls/day = $8K+/month lost</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THREE SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-label">Three Services</div>
+    <h2 class="section-title">Three Ways We Stop You Losing Jobs</h2>
+    <p class="section-sub">Start with one or all three. We recommend only what makes sense for your specific business — pricing on consultation, no packages you don't need.</p>
+    <div class="services-grid">
+
+      <div class="svc-card featured">
+        <div class="svc-num">1</div>
+        <div class="svc-icon">📞</div>
+        <h3>Missed Call Recovery</h3>
+        <div class="svc-hook">"Never lose another job to voicemail"</div>
+        <p>Every time your phone rings and nobody answers — our AI captures the caller, texts them back within seconds, and books them into your calendar automatically. Before they call your competitor.</p>
+        <ul class="svc-features">
+          <li>AI answers every missed call instantly</li>
+          <li>Captures caller name and phone number</li>
+          <li>Texts customer back within seconds</li>
+          <li>Books appointments into your calendar</li>
+          <li>Works after hours, weekends, holidays</li>
+          <li>You get notified of every new lead immediately</li>
+        </ul>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-num">2</div>
+        <div class="svc-icon">⭐</div>
+        <h3>Google Review Automation</h3>
+        <div class="svc-hook">"Outrank your competitor on Google"</div>
+        <p>After every completed job — automatically send a review request. Bad experience gets diverted to you first. Good experience goes straight to Google. Your rating climbs every single month on autopilot.</p>
+        <ul class="svc-features">
+          <li>Automatic review request after every job</li>
+          <li>Direct link — one tap to leave a review</li>
+          <li>Bad review diversion — fix it before it goes public</li>
+          <li>3-day follow-up if no review left</li>
+          <li>Zero staff involvement required</li>
+          <li>Most shops reach 100+ reviews within 90 days</li>
+        </ul>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-num">3</div>
+        <div class="svc-icon">🤖</div>
+        <h3>AI Voice Receptionist 24/7</h3>
+        <div class="svc-hook">"Answer every call — even on the job"</div>
+        <p>A full AI receptionist that answers calls, answers questions, and books appointments — 24 hours a day, 7 days a week. Your customers always hear a live voice. Your competitors don't offer this.</p>
+        <ul class="svc-features">
+          <li>AI voice answers every call live</li>
+          <li>Answers customer questions about your services</li>
+          <li>Books appointments directly into your calendar</li>
+          <li>AI Chat Widget on your website</li>
+          <li>Handles multiple calls simultaneously</li>
+          <li>Sounds natural — not like a phone tree</li>
+        </ul>
+      </div>
+
+    </div>
+    <div style="margin-top:2rem;padding:1.5rem 2rem;background:rgba(21,77,68,.06);border-radius:var(--radius);border-left:3px solid var(--teal);display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
+      <p style="font-size:.875rem;color:var(--slate);line-height:1.65;flex:1;min-width:280px;"><strong style="color:var(--teal);">Not sure which service fits your business?</strong> Book a free strategy call. We'll look at your phones, your Google listing, and your competitors — then tell you honestly which one will move the needle fastest for your shop.</p>
+      <a href="https://api.curatekai.com/widget/booking/EvrEIsnE6i1bLxEAAGJU" class="btn btn-outline" style="flex-shrink:0;">Book a Free Strategy Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
 <section class="how" id="how">
   <div class="section-inner">
     <div class="section-label">How It Works</div>
-    <h2 class="section-title">The AI Reactivation System</h2>
-    <p class="section-sub">We take your existing database of old leads and turn them into live conversations — automatically. No cold calling. No manual follow-up.</p>
+    <h2 class="section-title">What Happens When Someone Calls Your Business</h2>
+    <p class="section-sub">Here's exactly what happens with and without Curatek AI — from the moment the phone rings to the job being booked.</p>
     <div class="how-grid">
       <div class="how-steps">
-        <div class="how-step"><div class="how-num">1</div><div class="how-body"><h4>You Give Us Your Old Lead List</h4><p>Export your old leads from your CRM, spreadsheet, or any system as a CSV. Doesn't matter how old — 6 months to 3 years. We'll take them.</p></div></div>
-        <div class="how-step"><div class="how-num">2</div><div class="how-body"><h4>We Send the "Wake Up" SMS</h4><p>Our AI sends a simple conversational message — not a sales pitch. Something like: "Hey, is this the same [Name] that was looking for [service] a while back?" Natural. Human. Gets 20–40% response rate on leads everyone gave up on.</p></div></div>
-        <div class="how-step"><div class="how-num o">3</div><div class="how-body"><h4>AI Takes Over the Conversation</h4><p>When they reply — AI continues the conversation, qualifies the lead, and books an appointment directly into your calendar. Fully automated. Works 24/7.</p></div></div>
-        <div class="how-step"><div class="how-num o">4</div><div class="how-body"><h4>Gold, Silver, Bronze Sorting</h4><p>Booked appointments (Gold) go straight to your calendar. Engaged but not booked (Silver) go to your sales team as warm calls. No response (Bronze) — ignored.</p></div></div>
-        <div class="how-step"><div class="how-num g">5</div><div class="how-body"><h4>You Pay Us a Split of Revenue</h4><p>We only get paid when you make money. No results — no invoice. Simple performance partnership that aligns our incentives perfectly.</p></div></div>
+        <div class="how-step"><div class="how-num">1</div><div class="how-body"><h4>Customer Calls Your Business</h4><p>Homeowner needs emergency AC repair. Pipe burst. Storm damage. Car making a noise. They pick up their phone and call you — usually during the day when you're already on a job.</p></div></div>
+        <div class="how-step"><div class="how-num">2</div><div class="how-body"><h4>Nobody Answers — AI Steps In Instantly</h4><p>Instead of going to voicemail — Curatek AI intercepts the missed call within seconds. The customer hears a professional response immediately — not silence, not a voicemail beep.</p></div></div>
+        <div class="how-step"><div class="how-num o">3</div><div class="how-body"><h4>Customer Gets a Text Back Within Seconds</h4><p>"Hi — this is [Business Name]. We just missed your call but we're on it. Can you tell us a bit about what you need?" Customer replies. Conversation starts. Lead is captured.</p></div></div>
+        <div class="how-step"><div class="how-num o">4</div><div class="how-body"><h4>AI Qualifies and Books the Job</h4><p>AI continues the conversation — asks what they need, when they're available, confirms location. Books the appointment directly into your calendar. All while you're still on the other job.</p></div></div>
+        <div class="how-step"><div class="how-num g">5</div><div class="how-body"><h4>You Get Notified — Job Is Already Booked</h4><p>You finish the job you're on. You check your phone. New appointment is already in your calendar. Customer is expecting you. No callback needed. No lead lost.</p></div></div>
+        <div class="how-step"><div class="how-num g">6</div><div class="how-body"><h4>Job Done — Review Request Sent Automatically</h4><p>2 hours after the job is marked complete — customer gets a text asking for a Google review with a direct link. No staff involvement. Your rating climbs on autopilot.</p></div></div>
       </div>
-      <div class="sms-demo">
-        <div class="sms-demo-label">Live Example — The Wake Up SMS</div>
-        <div class="sms-msg"><div class="sms-msg-label">Curatek AI sends →</div><div class="sms-bubble sent">"Hey, it's Sarah from Riverside HVAC. Is this the same Mike that was looking to get his AC serviced last summer?"</div></div>
-        <div class="sms-msg"><div class="sms-msg-label">Lead replies →</div><div class="sms-bubble received">"Oh yeah, that's me. We ended up just dealing with it but it's acting up again now."</div></div>
-        <div class="sms-msg"><div class="sms-msg-label">AI continues →</div><div class="sms-bubble ai">"Oh no! Good thing we caught you then. We have a technician in your area this week — would Thursday or Friday work better for a quick look?"</div></div>
-        <div class="sms-msg"><div class="sms-msg-label">Lead replies →</div><div class="sms-bubble received">"Thursday works. What time?"</div></div>
-        <div class="sms-result">✓ Appointment booked automatically — zero staff involvement</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="tiers" id="tiers">
-  <div class="section-inner">
-    <div class="section-label">The Lead Sorting System</div>
-    <h2 class="section-title">Gold, Silver &amp; Bronze Leads</h2>
-    <p class="section-sub">Not every reactivated lead is equal. Our system automatically sorts them so your team focuses only on the highest-value opportunities.</p>
-    <div class="tier-grid">
-      <div class="tier-card gold"><div class="tier-icon">🥇</div><h3>Gold Leads</h3><p>Responded AND booked an appointment. These go straight into your calendar — fully automated. Your team just shows up and closes.</p><span class="tier-action">Auto-booked into calendar</span></div>
-      <div class="tier-card silver"><div class="tier-icon">🥈</div><h3>Silver Leads</h3><p>Responded but didn't book. They know your brand, they engaged, they're warm. Pass to your sales team — 10 calls instead of 500 cold dials.</p><span class="tier-action">Warm list for sales team</span></div>
-      <div class="tier-card bronze"><div class="tier-icon">🥉</div><h3>Bronze Leads</h3><p>Didn't respond. Not worth pursuing right now. Leave them alone and focus your energy on Gold and Silver only.</p><span class="tier-action">Set aside — move on</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="reviews-section" id="reviews">
-  <div class="section-inner">
-    <div class="section-label">Step 2 — Review Automation</div>
-    <h2 class="section-title">Turn Happy Customers Into Google Reviews — Automatically</h2>
-    <p class="section-sub">90% of customers check Google reviews before choosing a business. Your competitor has 200 reviews. You have 23. We fix that on autopilot.</p>
-    <div class="reviews-grid">
-      <div class="reviews-flow">
-        <div class="review-step"><div class="review-dot t"></div><p><strong>Service completed</strong> — customer leaves happy</p></div>
-        <div class="review-step"><div class="review-dot t"></div><p><strong>2 hours later</strong> — automated SMS sent: "Thanks for choosing us! Would you mind leaving a quick Google review?" with a direct link.</p></div>
-        <div class="review-step"><div class="review-dot o"></div><p><strong>One tap</strong> — takes them straight to your Google review page. Zero friction. Zero staff needed.</p></div>
-        <div class="review-step"><div class="review-dot o"></div><p><strong>3 days later</strong> — if no review yet, friendly follow-up sent automatically. Still no staff involvement.</p></div>
-        <div class="review-step"><div class="review-dot g"></div><p><strong>Reviews accumulate</strong> — month after month, your Google rating climbs. New customers choose you over competitors.</p></div>
-        <div style="margin-top:1.5rem;background:rgba(21,77,68,.06);border-left:4px solid var(--teal);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:1.1rem 1.25rem;">
-          <p style="font-size:.875rem;color:var(--teal);font-weight:600;line-height:1.6;">Bad experience? We divert negative feedback to your team first — so you fix it before it hits Google. Only happy customers get the review link.</p>
+      <div class="phone-flow">
+        <div class="flow-label">Without Curatek AI vs With Curatek AI</div>
+        <div class="flow-step">
+          <div class="flow-dot red">📞</div>
+          <div class="flow-text red"><h4>Customer calls at 6pm</h4><p>Without: Rings 4 times. Goes to voicemail. Customer hangs up.</p></div>
+        </div>
+        <div class="flow-divider"></div>
+        <div class="flow-step">
+          <div class="flow-dot red">⏭️</div>
+          <div class="flow-text red"><h4>Customer calls your competitor</h4><p>Without: They answer. They get the job. You never knew you lost it.</p></div>
+        </div>
+        <div class="flow-divider"></div>
+        <div style="height:1px;background:rgba(255,255,255,.1);margin:1rem 0;"></div>
+        <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#4ade80;margin-bottom:1rem;">With Curatek AI</div>
+        <div class="flow-step">
+          <div class="flow-dot green">📞</div>
+          <div class="flow-text green"><h4>Customer calls at 6pm</h4><p>AI intercepts instantly. Customer hears a professional response.</p></div>
+        </div>
+        <div class="flow-divider"></div>
+        <div class="flow-step">
+          <div class="flow-dot orange">💬</div>
+          <div class="flow-text orange"><h4>Text sent within seconds</h4><p>"We just missed you — tell us what you need and we'll get right back to you."</p></div>
+        </div>
+        <div class="flow-divider"></div>
+        <div class="flow-step">
+          <div class="flow-dot green">📅</div>
+          <div class="flow-text green"><h4>Job booked automatically</h4><p>AI qualifies the lead and books the appointment. You find out in the morning.</p></div>
+        </div>
+        <div class="flow-divider"></div>
+        <div class="flow-step">
+          <div class="flow-dot green">⭐</div>
+          <div class="flow-text green"><h4>Review request sent after job</h4><p>Customer gets a text with a direct Google review link. Rating climbs automatically.</p></div>
         </div>
       </div>
-      <div class="reviews-stats">
-        <div class="review-stat"><div class="review-stat-num">4x</div><div class="star-row">⭐⭐⭐⭐⭐</div><div class="review-stat-label">Businesses that ask for reviews get 4x more than those that don't — most never ask</div></div>
-        <div class="review-stat"><div class="review-stat-num">88%</div><div class="review-stat-label">Of consumers trust Google reviews as much as personal recommendations from friends</div></div>
-        <div class="review-stat"><div class="review-stat-num">$0</div><div class="review-stat-label">Staff time required — every review request sent and followed up automatically</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- THE MATH -->
+<section class="math" id="math">
+  <div class="section-inner">
+    <div class="section-label">The Math</div>
+    <h2 class="section-title">What Are Missed Calls Actually Costing You?</h2>
+    <p class="section-sub">Pick your industry and see the real numbers. This is the conversation we have on every strategy call — before you commit to anything.</p>
+    <div class="math-tabs">
+      <button class="math-tab active" onclick="showMath(0)">❄️ HVAC</button>
+      <button class="math-tab" onclick="showMath(1)">🔧 Plumbing</button>
+      <button class="math-tab" onclick="showMath(2)">🏠 Roofing</button>
+      <button class="math-tab" onclick="showMath(3)">🚗 Auto Repair</button>
+    </div>
+
+    <div class="math-content active" id="math-0">
+      <div class="math-rows">
+        <div class="math-row neutral"><span class="math-label">Average HVAC job value</span><span class="math-val">$3,000–8,000</span></div>
+        <div class="math-row bad"><span class="math-label strong">Missed calls per week after hours</span><span class="math-val">3–5 calls</span></div>
+        <div class="math-row bad"><span class="math-label strong">Revenue walking out the door weekly</span><span class="math-val">$9,000–40,000</span></div>
+        <div class="math-row bad"><span class="math-label strong">Revenue lost per month</span><span class="math-val">$36,000–160,000</span></div>
+        <div class="math-row highlight"><span class="math-label strong">Curatek captures and books</span><span class="math-val">Every missed call</span></div>
+        <div class="math-row good"><span class="math-label strong">Setup time</span><span class="math-val">48 hours</span></div>
+        <div class="math-row good"><span class="math-label strong">Contract required</span><span class="math-val">None</span></div>
+      </div>
+      <div class="math-visual">
+        <div class="math-big">$36K+</div>
+        <div class="math-big-sub">lost every month to missed calls</div>
+        <div class="math-note">If Curatek captures even 2 missed HVAC calls per week at $3,000 average — that's $24,000 per month recovered. Every month. From calls you were already getting but losing to voicemail.</div>
+      </div>
+    </div>
+
+    <div class="math-content" id="math-1">
+      <div class="math-rows">
+        <div class="math-row neutral"><span class="math-label">Average plumbing job value</span><span class="math-val">$500–2,000</span></div>
+        <div class="math-row bad"><span class="math-label strong">Missed emergency calls per week</span><span class="math-val">5–10 calls</span></div>
+        <div class="math-row bad"><span class="math-label strong">Revenue walking out the door weekly</span><span class="math-val">$2,500–20,000</span></div>
+        <div class="math-row bad"><span class="math-label strong">Revenue lost per month</span><span class="math-val">$10,000–80,000</span></div>
+        <div class="math-row highlight"><span class="math-label strong">Curatek captures and books</span><span class="math-val">Every missed call</span></div>
+        <div class="math-row good"><span class="math-label strong">Setup time</span><span class="math-val">48 hours</span></div>
+        <div class="math-row good"><span class="math-label strong">Contract required</span><span class="math-val">None</span></div>
+      </div>
+      <div class="math-visual">
+        <div class="math-big">$10K+</div>
+        <div class="math-big-sub">lost every month to missed calls</div>
+        <div class="math-note">Capture 5 missed plumbing calls per week at $800 average — that's $16,000 per month recovered. Emergency plumbing calls are the highest-intent leads you'll ever get. Don't let them go to voicemail.</div>
+      </div>
+    </div>
+
+    <div class="math-content" id="math-2">
+      <div class="math-rows">
+        <div class="math-row neutral"><span class="math-label">Average roofing job value</span><span class="math-val">$8,000–15,000</span></div>
+        <div class="math-row bad"><span class="math-label strong">Missed storm season calls per week</span><span class="math-val">2–5 calls</span></div>
+        <div class="math-row bad"><span class="math-label strong">Revenue walking out the door weekly</span><span class="math-val">$16,000–75,000</span></div>
+        <div class="math-row bad"><span class="math-label strong">Revenue lost per month</span><span class="math-val">$64,000–300,000</span></div>
+        <div class="math-row highlight"><span class="math-label strong">Curatek captures and books</span><span class="math-val">Every missed call</span></div>
+        <div class="math-row good"><span class="math-label strong">Setup time</span><span class="math-val">48 hours</span></div>
+        <div class="math-row good"><span class="math-label strong">Contract required</span><span class="math-val">None</span></div>
+      </div>
+      <div class="math-visual">
+        <div class="math-big">$64K+</div>
+        <div class="math-big-sub">lost every month during storm season</div>
+        <div class="math-note">One captured roofing call during storm season at $10,000 average pays for Curatek AI many times over. Missing even a single call in roofing is not a small problem — it's a $10,000 problem.</div>
+      </div>
+    </div>
+
+    <div class="math-content" id="math-3">
+      <div class="math-rows">
+        <div class="math-row neutral"><span class="math-label">Average auto repair job value</span><span class="math-val">$400–800</span></div>
+        <div class="math-row bad"><span class="math-label strong">Missed calls per day while on jobs</span><span class="math-val">3–8 calls</span></div>
+        <div class="math-row bad"><span class="math-label strong">Revenue walking out the door weekly</span><span class="math-val">$6,000–22,400</span></div>
+        <div class="math-row bad"><span class="math-label strong">Revenue lost per month</span><span class="math-val">$24,000–90,000</span></div>
+        <div class="math-row highlight"><span class="math-label strong">Curatek captures and books</span><span class="math-val">Every missed call</span></div>
+        <div class="math-row good"><span class="math-label strong">Setup time</span><span class="math-val">48 hours</span></div>
+        <div class="math-row good"><span class="math-label strong">Contract required</span><span class="math-val">None</span></div>
+      </div>
+      <div class="math-visual">
+        <div class="math-big">$24K+</div>
+        <div class="math-big-sub">lost every month to missed calls</div>
+        <div class="math-note">Capture 5 missed auto repair calls per day at $500 average — that's $52,000 per month recovered. Auto shops miss calls constantly because everyone is under a car. That's exactly what Curatek fixes.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- REVIEW AUTOMATION -->
+<section class="reviews" id="reviews">
+  <div class="section-inner">
+    <div class="section-label">Google Reviews</div>
+    <h2 class="section-title">Your Competitor Has 200 Reviews. You Have 23. We Fix That.</h2>
+    <p class="section-sub">90% of homeowners check Google reviews before choosing a contractor. If your competitor shows up above you with more reviews — they get the call. Not you. We automate the entire review process.</p>
+    <div class="reviews-grid">
+      <div class="review-flow">
+        <div class="rf-step"><div class="rf-dot t"></div><p><strong>Job completed</strong> — customer is happy with the work</p></div>
+        <div class="rf-step"><div class="rf-dot t"></div><p><strong>2 hours later</strong> — automated text sent: "Thanks for choosing [Business Name]! If you had a great experience would you mind leaving us a quick Google review?"</p></div>
+        <div class="rf-step"><div class="rf-dot o"></div><p><strong>Direct link included</strong> — one tap takes them straight to your Google review page. No searching. No hunting. Zero friction.</p></div>
+        <div class="rf-step"><div class="rf-dot o"></div><p><strong>Bad experience?</strong> — negative feedback gets sent to YOU first so you can fix it before it ever reaches Google. Only happy customers get the review link.</p></div>
+        <div class="rf-step"><div class="rf-dot g"></div><p><strong>3-day follow-up</strong> — if no review yet, a friendly reminder sent automatically. Still no staff involvement.</p></div>
+        <div class="rf-step"><div class="rf-dot g"></div><p><strong>Reviews accumulate</strong> — month after month your Google rating climbs. New customers see you above competitors and call you first.</p></div>
+        <div style="margin-top:1.5rem;background:rgba(21,77,68,.06);border-left:4px solid var(--teal);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:1.1rem 1.25rem;">
+          <p style="font-size:.875rem;color:var(--teal);font-weight:600;line-height:1.6;">Most home service companies go from under 30 reviews to 100+ within 90 days. The only thing that changes is the automated ask after every job.</p>
+        </div>
+      </div>
+      <div class="review-stats">
+        <div class="rev-stat">
+          <div class="rev-stat-num">90%</div>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <div class="rev-stat-label">Of customers check Google reviews before choosing a local contractor — reviews determine who gets the call</div>
+        </div>
+        <div class="rev-stat">
+          <div class="rev-stat-num">4x</div>
+          <div class="rev-stat-label">More reviews collected when you ask automatically vs relying on customers to remember on their own</div>
+        </div>
+        <div class="rev-stat">
+          <div class="rev-stat-num">$0</div>
+          <div class="rev-stat-label">Staff time required — every request sent and followed up automatically after every single job</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="frontdesk" id="frontdesk">
+<!-- MAP GAP -->
+<section class="mapgap" id="mapgap">
   <div class="section-inner">
-    <div class="section-label" style="color:var(--gold)">Step 3 — AI Front Desk</div>
-    <h2 class="section-title" style="color:var(--white)">Never Miss Another New Lead — Ever</h2>
-    <p class="section-sub">Database reactivation recovers your past. The AI front desk captures your future. Every missed call, every after-hours inquiry, every website visitor — captured automatically 24/7.</p>
-    <div class="frontdesk-grid">
-      <div class="fd-card"><div class="fd-icon">🎙️</div><h4>AI Voice Receptionist</h4><p>Answers every missed call 24/7. Captures caller name and phone number. Texts them back instantly.</p></div>
-      <div class="fd-card"><div class="fd-icon">💬</div><h4>AI Chat Widget</h4><p>Installed on your website. Captures visitors after hours and converts them into leads automatically.</p></div>
-      <div class="fd-card"><div class="fd-icon">📱</div><h4>Missed Call SMS Recovery</h4><p>Every missed call gets an instant text back within seconds — before they call your competitor.</p></div>
-      <div class="fd-card"><div class="fd-icon">📅</div><h4>Appointment Reminders</h4><p>Automated SMS reminders reduce no-shows. Customers confirm by text — zero staff involvement.</p></div>
-      <div class="fd-card"><div class="fd-icon">🔔</div><h4>Instant Staff Notifications</h4><p>Your team gets notified immediately when a new lead comes in — name, number, what they need.</p></div>
-      <div class="fd-card"><div class="fd-icon">📊</div><h4>CRM Pipeline Tracking</h4><p>Every lead tracked from first contact to closed deal. See your entire pipeline at a glance.</p></div>
+    <div class="section-label">The Map Gap Audit</div>
+    <h2 class="section-title">We Find Your Gaps Before We Even Talk</h2>
+    <p class="section-sub">Before every strategy call we audit your Google listing, your website, and your top competitors — so we walk in knowing exactly where you're losing customers right now.</p>
+    <div class="mapgap-grid">
+      <div class="gap-list">
+        <div class="gap-item">
+          <h4>📊 Low Google Review Count</h4>
+          <p>We check your reviews against your top 3 local competitors. If they have 5x more — customers are choosing them before ever calling you.</p>
+          <div class="gap-pitch">"You have 18 reviews. Your competitor has 247 and ranks above you on Google."</div>
+        </div>
+        <div class="gap-item">
+          <h4>📅 Last Review Posted Months Ago</h4>
+          <p>Google ranks businesses higher when they consistently get fresh reviews. A last review from 8 months ago signals your business may be inactive.</p>
+          <div class="gap-pitch">"Your last review was 7 months ago — Google and customers both notice that."</div>
+        </div>
+        <div class="gap-item">
+          <h4>📞 No After-Hours Phone Coverage</h4>
+          <p>We check your listed hours. If you close at 5pm — every emergency call after that goes to whoever answers. In HVAC, plumbing, and roofing those are your highest-value calls.</p>
+          <div class="gap-pitch">"Your phones close at 5pm. Emergency calls don't stop at 5pm."</div>
+        </div>
+        <div class="gap-item">
+          <h4>💬 No Chat Widget on Website</h4>
+          <p>We visit your website after hours and look for a way to reach you. If there's no chat widget — visitors bounce to a competitor who has one.</p>
+          <div class="gap-pitch">"Your website is open 24 hours but your front desk closes at 5pm."</div>
+        </div>
+        <div class="gap-item">
+          <h4>🔇 Not Responding to Reviews</h4>
+          <p>Every unanswered review looks like nobody's home. Customers choosing between two businesses will pick the one that responds — every time.</p>
+          <div class="gap-pitch">"Customers left you 5-star reviews and heard nothing back."</div>
+        </div>
+      </div>
+      <div>
+        <div class="audit-card">
+          <div class="audit-title">Sample Audit — HVAC Company · Lanham MD</div>
+          <div class="audit-row"><span class="audit-row-label">Google reviews</span><span class="badge bad">18 reviews ❌</span></div>
+          <div class="audit-row"><span class="audit-row-label">Top competitor reviews</span><span class="badge bad">247 reviews ↑</span></div>
+          <div class="audit-row"><span class="audit-row-label">Last review posted</span><span class="badge bad">9 months ago ❌</span></div>
+          <div class="audit-row"><span class="audit-row-label">Responding to reviews</span><span class="badge bad">Never ❌</span></div>
+          <div class="audit-row"><span class="audit-row-label">After-hours coverage</span><span class="badge bad">Voicemail only ❌</span></div>
+          <div class="audit-row"><span class="audit-row-label">Chat widget on website</span><span class="badge bad">None ❌</span></div>
+          <div class="audit-row"><span class="audit-row-label">Online booking</span><span class="badge bad">No ❌</span></div>
+          <div class="audit-row"><span class="audit-row-label">Website linked on Google</span><span class="badge good">Yes ✓</span></div>
+          <div class="audit-score">
+            <p>Gap Score: 7 out of 8<br>Estimated monthly revenue loss from missed calls alone: $15,000–40,000</p>
+          </div>
+        </div>
+        <div style="margin-top:1.25rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:1.5rem;text-align:center;">
+          <p style="font-size:.875rem;color:rgba(255,255,255,.6);line-height:1.65;margin-bottom:1rem;">Want us to run this audit on your business? Book a free strategy call and we'll show you exactly where you're losing customers — before you commit to anything.</p>
+          <a href="https://api.curatekai.com/widget/booking/EvrEIsnE6i1bLxEAAGJU" class="btn btn-primary">Get Your Free Audit</a>
+        </div>
+      </div>
     </div>
-    <div class="fd-demo-box">
-      <h3>Experience the AI Live Right Now</h3>
-      <p>Call our demo line and speak to the AI as if you're a customer calling after hours. That's exactly what your customers would experience.</p>
-      <a href="tel:+12138450827" class="phone-number">+1 (213) 845-0827</a>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section class="demo" id="demo">
+  <div class="section-inner">
+    <div class="section-label">Hear It Live</div>
+    <h2 class="section-title">Call the AI Right Now — Before You Decide Anything</h2>
+    <p class="section-sub">Don't take our word for it. Call this number right now and speak to the AI as if you're a homeowner calling an HVAC company after hours. That's exactly what your customers would experience.</p>
+    <div class="demo-box">
+      <h3>Your AI Receptionist — Available 24/7</h3>
+      <p>Call this number. Pretend you're a customer with a broken AC at 10pm. Ask questions. See what your customers would hear — and what your competitors are already using to capture your missed calls.</p>
+      <a href="tel:+12138450827" class="phone-big">+1 (213) 845-0827</a>
+      <div class="phone-sub">Call anytime — day or night — the AI never sleeps</div>
       <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
         <a href="tel:+12138450827" class="btn btn-primary btn-lg">📞 Call the AI Now</a>
         <a href="https://app.curatekai.com/demo" class="btn btn-ghost btn-lg">💬 Try the Chat Demo</a>
+        <a href="https://api.curatekai.com/widget/booking/EvrEIsnE6i1bLxEAAGJU" class="btn btn-ghost btn-lg">📅 Book a Strategy Call</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="pricing" id="pricing">
+<!-- SERVICE AREA -->
+<section class="area" id="area">
   <div class="section-inner">
-    <div class="section-label">How We Work Together</div>
-    <h2 class="section-title">Every Business Is Different. We Start With a Conversation.</h2>
-    <p class="section-sub">Some businesses need database reactivation. Some need review automation. Some need the full AI front desk. We don't believe in one-size-fits-all packages — we recommend only what makes sense for your specific situation.</p>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;">
-      <div style="background:var(--white);border-radius:var(--radius);padding:2rem;box-shadow:0 2px 16px rgba(0,0,0,.05);border-top:3px solid var(--orange);">
-        <div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--orange);margin-bottom:.5rem;">Step 1</div>
-        <div style="font-size:1.1rem;font-weight:800;color:var(--teal);margin-bottom:.75rem;">🔄 Database Reactivation</div>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem;">
-          <li style="font-size:.865rem;color:var(--slate);display:flex;gap:.6rem;align-items:flex-start;"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">✓</span>AI wake-up SMS to old lead database</li>
-          <li style="font-size:.865rem;color:var(--slate);display:flex;gap:.6rem;align-items:flex-start;"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">✓</span>Conversational AI books appointments</li>
-          <li style="font-size:.865rem;color:var(--slate);display:flex;gap:.6rem;align-items:flex-start;"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">✓</span>Gold/Silver/Bronze lead sorting</li>
-          <li style="font-size:.865rem;color:var(--slate);display:flex;gap:.6rem;align-items:flex-start;"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">✓</span>Performance based — you pay on results</li>
-        </ul>
-        <div style="background:rgba(22,163,74,.08);border:1px solid rgba(22,163,74,.2);border-radius:var(--radius-sm);padding:.75rem 1rem;font-size:.82rem;color:var(--green);font-weight:600;">Zero upfront cost — performance based</div>
+    <div class="section-label">Service Area</div>
+    <h2 class="section-title">Serving DC, Maryland &amp; Virginia</h2>
+    <p class="section-sub">We're based right here in Lanham, Maryland — your neighbor, not some random agency calling from across the country. We serve independent home service companies across the entire DMV area.</p>
+    <div class="area-grid">
+      <div class="area-card">
+        <div class="area-flag">🏛️</div>
+        <h4>Washington DC</h4>
+        <p>All DC neighborhoods and independent home service companies throughout the District</p>
       </div>
-      <div style="background:var(--white);border-radius:var(--radius);padding:2rem;box-shadow:0 2px 16px rgba(0,0,0,.05);border-top:3px solid var(--teal);transform:translateY(-6px);border:2px solid var(--teal);">
-        <div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--orange);margin-bottom:.5rem;">Step 2</div>
-        <div style="font-size:1.1rem;font-weight:800;color:var(--teal);margin-bottom:.75rem;">⭐ Review Automation</div>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem;">
-          <li style="font-size:.865rem;color:var(--slate);display:flex;gap:.6rem;align-items:flex-start;"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">✓</span>Automated Google review requests</li>
-          <li style="font-size:.865rem;color:var(--slate);display:flex;gap:.6rem;align-items:flex-start;"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">✓</span>Bad review diversion system</li>
-          <li style="font-size:.865rem;color:var(--slate);display:flex;gap:.6rem;align-items:flex-start;"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">✓</span>Sent after every completed service</li>
-          <li style="font-size:.865rem;color:var(--slate);display:flex;gap:.6rem;align-items:flex-start;"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">✓</span>Zero staff involvement required</li>
-        </ul>
-        <div style="background:rgba(21,77,68,.06);border:1px solid rgba(21,77,68,.15);border-radius:var(--radius-sm);padding:.75rem 1rem;font-size:.82rem;color:var(--teal);font-weight:600;">Monthly service — pricing on consultation</div>
+      <div class="area-card">
+        <div class="area-flag">🦀</div>
+        <h4>Maryland</h4>
+        <p>Prince George's · Montgomery · Anne Arundel · Howard · Baltimore · Frederick · Charles · Calvert counties</p>
       </div>
-      <div style="background:var(--white);border-radius:var(--radius);padding:2rem;box-shadow:0 2px 16px rgba(0,0,0,.05);border-top:3px solid var(--orange);">
-        <div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--orange);margin-bottom:.5rem;">Step 3</div>
-        <div style="font-size:1.1rem;font-weight:800;color:var(--teal);margin-bottom:.75rem;">🤖 AI Front Desk 24/7</div>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem;">
-          <li style="font-size:.865rem;color:var(--slate);display:flex;gap:.6rem;align-items:flex-start;"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">✓</span>AI Voice Receptionist 24/7</li>
-          <li style="font-size:.865rem;color:var(--slate);display:flex;gap:.6rem;align-items:flex-start;"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">✓</span>AI Chat Widget on your website</li>
-          <li style="font-size:.865rem;color:var(--slate);display:flex;gap:.6rem;align-items:flex-start;"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">✓</span>Missed call SMS recovery</li>
-          <li style="font-size:.865rem;color:var(--slate);display:flex;gap:.6rem;align-items:flex-start;"><span style="color:var(--teal);font-weight:700;flex-shrink:0;">✓</span>CRM pipeline tracking</li>
-        </ul>
-        <div style="background:rgba(21,77,68,.06);border:1px solid rgba(21,77,68,.15);border-radius:var(--radius-sm);padding:.75rem 1rem;font-size:.82rem;color:var(--teal);font-weight:600;">Monthly service — pricing on consultation</div>
+      <div class="area-card">
+        <div class="area-flag">🦅</div>
+        <h4>Virginia</h4>
+        <p>Northern Virginia · Fairfax · Arlington · Alexandria · Loudoun · Prince William · Stafford · Fredericksburg</p>
       </div>
     </div>
-    <div style="margin-top:3rem;background:var(--bg-dark);border-radius:var(--radius);padding:2.5rem;text-align:center;">
-      <h3 style="font-size:1.4rem;font-weight:800;color:var(--white);margin-bottom:.75rem;">Not Sure Which Service You Need?</h3>
-      <p style="font-size:.95rem;color:rgba(255,255,255,.6);max-width:520px;margin:0 auto 1.75rem;line-height:1.75;">Book a free 15-minute strategy call. We'll look at your business together and recommend only what makes sense — no packages, no upsells you don't need.</p>
-      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-        <a href="https://api.curatekai.com/widget/booking/EvrEIsnE6i1bLxEAAGJU" class="btn btn-primary btn-lg">Book a Free Strategy Call</a>
-        <a href="tel:+12138450827" class="btn btn-ghost btn-lg">📞 Call +1 (213) 845-0827</a>
-      </div>
-      <p style="font-size:.8rem;color:rgba(255,255,255,.3);margin-top:1.25rem;">No contract. No commitment. Just an honest conversation about what we can do for your business.</p>
+    <div style="margin-top:1.5rem;text-align:center;">
+      <p style="font-size:.875rem;color:var(--text-muted);">Outside the DMV area? We work remotely with home service companies anywhere in the US. <a href="https://api.curatekai.com/widget/booking/EvrEIsnE6i1bLxEAAGJU" style="color:var(--teal);font-weight:600;">Book a call to find out →</a></p>
     </div>
   </div>
 </section>
 
-<section class="who" id="who">
-  <div class="section-inner">
-    <div class="section-label">Who We Work With</div>
-    <h2 class="section-title">Any Business With Old Leads &amp; Missed Calls</h2>
-    <p class="section-sub">If your business has a database of past inquiries, a phone that rings, or a website that gets visitors — Curatek AI can turn all of it into revenue.</p>
-    <div class="who-grid">
-      <div class="who-card"><div class="who-icon">🔧</div><h4>HVAC &amp; Plumbing</h4><p>Emergency calls, seasonal leads, old service inquiries</p></div>
-      <div class="who-card"><div class="who-icon">🚗</div><h4>Auto Repair</h4><p>Past customers, estimate requests, service reminders</p></div>
-      <div class="who-card"><div class="who-icon">🏠</div><h4>Real Estate</h4><p>Old buyer/seller inquiries, open house leads, referrals</p></div>
-      <div class="who-card"><div class="who-icon">🏦</div><h4>Mortgage &amp; Finance</h4><p>Pre-approval inquiries, refinance leads, abandoned applications</p></div>
-      <div class="who-card"><div class="who-icon">🦴</div><h4>Chiropractic &amp; PT</h4><p>Old patient inquiries, no-show reactivation, referrals</p></div>
-      <div class="who-card"><div class="who-icon">💅</div><h4>MedSpa &amp; Wellness</h4><p>Consultation inquiries, lapsed clients, seasonal campaigns</p></div>
-      <div class="who-card"><div class="who-icon">🏥</div><h4>Healthcare</h4><p>Patient outreach, appointment follow-up, compliance reminders</p></div>
-      <div class="who-card"><div class="who-icon">☀️</div><h4>Solar &amp; Home Services</h4><p>Quote requests, old pipeline leads, referral reactivation</p></div>
-    </div>
-    <div style="margin-top:2rem;text-align:center;">
-      <p style="font-size:.9rem;color:var(--text-muted);">Working in home dialysis? We built something specific for you. <a href="/dialysis.html" style="color:var(--teal);font-weight:600;">See the home dialysis solution →</a></p>
-    </div>
-  </div>
-</section>
-
+<!-- ABOUT -->
 <section class="about" id="about">
   <div class="section-inner">
     <div class="section-label">About Curatek AI</div>
-    <h2 class="section-title" style="color:var(--white)">Built by Someone Who Has Lived the Problem</h2>
+    <h2 class="section-title">Built by Someone Who Understands How Service Businesses Work</h2>
     <div class="about-grid">
       <div class="about-quote">
-        <p>I spent 10 years in healthcare — starting as a travel tech with DaVita and later as a PCT III Preceptor at Fresenius Medical Care home therapy. I watched businesses lose money every single day to missed calls, forgotten leads, and manual follow-up that never happened. So I built Curatek AI to fix it.</p>
+        <p>I spent 10 years in service operations — DaVita and Fresenius Medical Care — watching businesses lose money every single day to missed calls and manual follow-up that never happened. The problem is always the same: the phone rings, nobody answers, and the customer calls your competitor. I built Curatek AI to fix that — starting right here in Lanham, Maryland.</p>
         <cite>— Joseph Massaquoi · Founder, Curatek AI · Lanham, Maryland</cite>
       </div>
       <div class="about-creds">
-        <div class="about-cred"><h4>10 Years in Healthcare Operations</h4><p>DaVita travel tech + FMC PCT III Preceptor — deep understanding of workflow challenges in service-based businesses</p></div>
-        <div class="about-cred"><h4>Based in Lanham, Maryland</h4><p>Serving the DC/Maryland/Virginia metro area — local business owner serving local businesses</p></div>
-        <div class="about-cred"><h4>GoHighLevel Certified</h4><p>HIPAA-compliant platform serving both healthcare and non-healthcare businesses</p></div>
-        <div class="about-cred"><h4>Performance-First Philosophy</h4><p>We don't charge before we've proven results. Our entry offer is always performance based — zero risk to you</p></div>
+        <div class="about-cred"><h4>10 Years in Service Operations</h4><p>Deep understanding of how service businesses work — the missed calls, the follow-up that never happens, and the revenue that walks out the door every single day</p></div>
+        <div class="about-cred"><h4>Based in Lanham, Maryland</h4><p>Serving DC, Maryland, and Virginia — I'm your neighbor, not an agency cold-calling from across the country</p></div>
+        <div class="about-cred"><h4>GoHighLevel Certified Platform</h4><p>The same platform used by thousands of agencies nationwide — battle-tested, reliable, HIPAA compliant, and built for volume</p></div>
+        <div class="about-cred"><h4>Independent Businesses Only</h4><p>We don't work with franchises or corporate chains. We work with owners who make decisions fast and want results the same week</p></div>
         <div class="about-cred"><h4>WEGATHIS LLC · Lanham, MD 20706</h4><p>joe@curatekai.com · +1 (213) 845-0827 · curatekai.com</p></div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- FAQ -->
 <section class="faq" id="faq">
   <div class="section-inner">
     <div class="section-label">FAQ</div>
     <h2 class="section-title">Common Questions</h2>
     <div class="faq-grid">
-      <details><summary>How does the performance-based pricing work?</summary><p>Simple. You give us your old lead list. We run the reactivation campaign. When those leads convert into revenue — we take an agreed percentage. If we make nothing — you pay nothing. We agree on the split upfront before we start.</p></details>
-      <details><summary>How old can the leads be?</summary><p>We've successfully reactivated leads that are 1, 2, even 3 years old. The conversational approach of our AI message works because it doesn't feel like a sales pitch — it feels like a human checking in.</p></details>
-      <details><summary>What do I need to get started?</summary><p>Just a list of old leads in any format — CSV, spreadsheet, or exported from your CRM. Name and phone number is enough. We handle everything else.</p></details>
-      <details><summary>How long does setup take?</summary><p>24 hours from the time you give us your lead list. We configure everything — you don't need to learn any software or set up any integrations.</p></details>
-      <details><summary>Is this HIPAA compliant?</summary><p>Yes. Powered by GoHighLevel — a HIPAA-compliant platform with Business Associate Agreement available. We work with both healthcare and non-healthcare businesses.</p></details>
-      <details><summary>Does this work for my industry?</summary><p>If your business has old leads or missed calls — it works. We've applied this to HVAC, auto repair, healthcare, real estate, mortgage, solar, chiropractic, and more. Book a strategy call and we'll tell you honestly if it's a fit.</p></details>
-      <details><summary>What if I don't have many old leads?</summary><p>We can set up the system to work on new incoming leads from your ads or website going forward. The AI front desk and review automation work independently of the database reactivation.</p></details>
-      <details><summary>Is there a contract?</summary><p>No. Month-to-month for all monthly services. The database reactivation is performance based — you only pay when we deliver results. 30-day money back guarantee on all monthly plans.</p></details>
+      <details><summary>How does the missed call recovery actually work?</summary><p>When a call comes in and nobody answers — our system intercepts it within seconds. The caller gets a professional SMS response immediately asking what they need. Our AI continues the conversation, qualifies the lead, and books the appointment into your calendar. You get notified. The job is booked before they ever call your competitor.</p></details>
+      <details><summary>Do I need to change my phone system?</summary><p>No. We work with your existing phone number and system. There's no porting, no new hardware, and no IT setup required. We integrate on top of what you already have. Most businesses are live within 24 hours of signing up.</p></details>
+      <details><summary>What does setup involve?</summary><p>A short 30-minute onboarding call where we learn about your business, your services, and your calendar system. We configure everything. You approve the setup. We go live. You don't need to learn any software or manage any tools.</p></details>
+      <details><summary>How much does it cost?</summary><p>Pricing is based on your business size and which services you need. We never show prices online because every business is different — an HVAC company with 5 techs has different needs than a solo plumber. Book a free strategy call and we'll give you a clear number based on your specific situation.</p></details>
+      <details><summary>Is there a contract?</summary><p>No long-term contracts. Month-to-month on all services. 30-day money back guarantee. We earn your business every month through results — not paperwork.</p></details>
+      <details><summary>Do you work with franchise locations?</summary><p>No. We work exclusively with independently owned and operated businesses. Franchise locations need corporate approval for everything — that's not who we built this for. We work with owners who can say yes today.</p></details>
+      <details><summary>What if I already have a voicemail system?</summary><p>Voicemail is not the solution — it's the problem. Most customers don't leave voicemails. They hang up and call the next business. Curatek AI captures them before they ever hear a beep.</p></details>
+      <details><summary>Do you only serve the DC/MD/VA area?</summary><p>We're based in Lanham MD and primarily serve the DMV area — but we work remotely with independent home service companies anywhere in the United States. Book a call and we'll let you know if we can help.</p></details>
     </div>
   </div>
 </section>
 
+<!-- FINAL CTA -->
 <section class="final-cta">
-  <h2>Ready to Find Out What Your <span>Old Leads Are Worth?</span></h2>
-  <p>Book a free 15-minute strategy call. We'll look at your lead database together and tell you honestly what we think we can recover — before you commit to anything.</p>
-  <div class="final-cta-btns">
+  <h2>Stop Losing Jobs to <span>Missed Calls.</span></h2>
+  <p>Book a free 15-minute strategy call. We'll audit your phones, your Google listing, and your competitors — and tell you honestly exactly what we think we can do for your business.</p>
+  <div class="final-btns">
     <a href="https://api.curatekai.com/widget/booking/EvrEIsnE6i1bLxEAAGJU" class="btn btn-primary btn-lg">Book a Free Strategy Call</a>
     <a href="tel:+12138450827" class="btn btn-ghost btn-lg">📞 Call +1 (213) 845-0827</a>
   </div>
@@ -479,29 +784,40 @@
 <footer>
   <div class="footer-inner">
     <div>
-      <div style="font-size:1.1rem;font-weight:700;color:rgba(255,255,255,.9);margin-bottom:.5rem;">Curatek <span style="color:#E98D50;">AI</span></div>
-      <p style="font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.65;">AI-powered lead reactivation, review automation, and front desk solutions for local businesses in the DC/Maryland/Virginia area.</p>
+      <div style="font-size:1.1rem;font-weight:800;color:rgba(255,255,255,.9);margin-bottom:.5rem;">Curatek <span style="color:#E98D50;">AI</span></div>
+      <p style="font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.65;margin-bottom:1rem;">Missed call recovery, Google review automation, and AI voice receptionist for independent HVAC, plumbing, roofing, and auto repair companies in DC, Maryland, and Virginia.</p>
+      <p style="font-size:.75rem;color:rgba(255,255,255,.2);">Lanham · Bowie · Largo · Landover · Hyattsville · Greenbelt · College Park · Glenarden · Northern Virginia · DC Metro</p>
     </div>
     <div>
       <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.5);margin-bottom:.75rem;">Contact</div>
-      <p style="font-size:.82rem;color:rgba(255,255,255,.35);line-height:1.8;">Joseph Massaquoi<br>WEGATHIS LLC<br>Lanham, Maryland 20706<br>+1 (213) 845-0827<br>joe@curatekai.com</p>
+      <p style="font-size:.82rem;color:rgba(255,255,255,.35);line-height:1.9;">Joseph Massaquoi<br>WEGATHIS LLC<br>Lanham, Maryland 20706<br>+1 (213) 845-0827<br>joe@curatekai.com</p>
     </div>
     <div>
-      <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.5);margin-bottom:.75rem;">Pages</div>
-      <p style="font-size:.82rem;line-height:1.8;">
-        <a href="/dialysis.html" style="display:block;">Home Dialysis Solution</a>
-        <a href="/survey.html" style="display:block;">Dialysis Survey</a>
+      <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.5);margin-bottom:.75rem;">Quick Links</div>
+      <p style="font-size:.82rem;line-height:2;">
+        <a href="#who" style="display:block;">Industries We Serve</a>
+        <a href="#services" style="display:block;">Our Services</a>
+        <a href="#how" style="display:block;">How It Works</a>
+        <a href="#math" style="display:block;">The Math</a>
         <a href="https://app.curatekai.com/demo" style="display:block;">Live Demo</a>
+        <a href="https://api.curatekai.com/widget/booking/EvrEIsnE6i1bLxEAAGJU" style="display:block;">Book a Strategy Call</a>
         <a href="/privacy.html" style="display:block;">Privacy Policy</a>
         <a href="/terms.html" style="display:block;">Terms of Service</a>
       </p>
     </div>
   </div>
   <div class="footer-bottom">
-    <p style="font-size:.78rem;color:rgba(255,255,255,.25);">© 2026 Curatek AI · WEGATHIS LLC · Lanham, Maryland · All rights reserved</p>
+    <p style="font-size:.78rem;color:rgba(255,255,255,.25);">© 2026 Curatek AI · WEGATHIS LLC · Lanham, Maryland · All rights reserved · Serving DC · Maryland · Virginia</p>
     <p style="font-size:.72rem;color:rgba(255,255,255,.15);margin-top:.4rem;">SMS sent by Curatek AI on behalf of partner businesses. Msg &amp; data rates may apply. Reply STOP to cancel.</p>
   </div>
 </footer>
+
+<script>
+function showMath(i){
+  document.querySelectorAll('.math-content').forEach((el,j)=>el.classList.toggle('active',i===j));
+  document.querySelectorAll('.math-tab').forEach((el,j)=>el.classList.toggle('active',i===j));
+}
+</script>
 
 <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="69b816843e78291ce1e88f48"></script>
 </body>
